@@ -184,9 +184,7 @@ header.scrolled{
 .about-img{ position:relative; aspect-ratio:3/3.8; border-radius:var(--radio);
   overflow:hidden; border:1.5px solid var(--tinta); box-shadow:10px 10px 0 var(--lavanda);
   background:linear-gradient(150deg,var(--crema-2),var(--rosa)); }
-.about-img::after{ content:"[ retrato de la autora ]"; position:absolute; inset:0;
-  display:flex; align-items:center; justify-content:center; font-style:italic;
-  color:var(--gris); opacity:.55; font-size:.9rem; }
+.about-img img{ width:100%; height:100%; object-fit:cover; object-position:center 30%; }
 .about-h{ font-size:clamp(1.9rem,4.4vw,3.1rem); margin:1.1rem 0 1.4rem; font-weight:700; }
 .about-p{ color:var(--gris); font-size:1rem; max-width:56ch; margin-bottom:1.3rem; }
 .pull-quote{ font-style:italic; font-size:clamp(1.15rem,2.3vw,1.6rem); line-height:1.45;
@@ -434,12 +432,8 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
       <div class="hero-copy">
         <span class="eyebrow reveal">Escritora · Novela · Cuento</span>
         <h1 class="hero-name reveal d1">DELFINA<br><span>KORN</span><span class="caret"></span></h1>
-        <p class="hero-lead reveal d2">Escritura, memoria y ficción desde una voz propia.</p>
-        <p class="hero-text reveal d3">
-          Autora de novela y cuento. Coordina talleres de escritura y clínicas
-          de obra. Este es el lugar donde reúno mis libros, mis talleres y los
-          textos que escribo entre libro y libro.
-        </p>
+        <p class="hero-lead reveal d2">El texto iría acá.</p>
+        <p class="hero-text reveal d3">El texto iría acá.</p>
         <div class="hero-actions reveal d4">
           <a href="#obras" class="btn btn--solid">Ver obras <span class="arr">→</span></a>
           <a href="#sobre" class="btn btn--ghost">Conocer más</a>
@@ -453,8 +447,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="hero-cover"><img src="assets/el-yanqui.jpeg" alt="Tapa de El yanqui, de Delfina Korn" /></div>
         <span class="float-tag">Último libro</span>
         <div class="hero-card">
-          <p class="q">“Toda memoria inventa algo para poder sobrevivir.”</p>
-          <p class="s">— Delfina Korn</p>
+          <p class="q">El texto iría acá.</p>
         </div>
       </div>
     </div>
@@ -465,29 +458,14 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
 <!-- EDITAR: reemplazar texto biográfico por la bio real de Delfina. -->
 <section class="section" id="sobre">
   <div class="wrap about-grid">
-    <div class="about-img reveal"></div>
+    <div class="about-img reveal">
+      <img src="assets/delfina-korn.jpeg" alt="Retrato de Delfina Korn" />
+    </div>
     <div class="about-copy">
       <span class="eyebrow reveal">Sobre la autora</span>
-      <h2 class="about-h reveal d1">Una voz que escribe<br>desde la intimidad.</h2>
-      <p class="about-p reveal d1">
-        Autora, lectora y creadora de mundos íntimos. Su escritura explora la
-        memoria, los vínculos, el deseo, la identidad y las pequeñas fracturas
-        de la vida cotidiana.
-      </p>
-      <p class="about-p reveal d2">
-        Ha publicado novelas y libros de cuentos con editoriales como Mansalva,
-        Bombal y Griselda García Editora. Coordina el taller de escritura
-        “Cómo encontrar la mirada propia” y la Clínica de obra, un trabajo de
-        acompañamiento uno a uno.
-      </p>
-      <blockquote class="pull-quote reveal d2">
-        “Escribir también es ordenar una forma de mirar.”
-      </blockquote>
-      <div class="about-meta reveal d3">
-        <div><div class="n">4</div><div class="l">Libros publicados</div></div>
-        <div><div class="n">2</div><div class="l">Talleres / clínicas</div></div>
-        <div><div class="n">3</div><div class="l">Editoriales</div></div>
-      </div>
+      <h2 class="about-h reveal d1">El título iría acá</h2>
+      <p class="about-p reveal d1">El texto iría acá.</p>
+      <blockquote class="pull-quote reveal d2">El texto iría acá.</blockquote>
     </div>
   </div>
 </section>
@@ -498,9 +476,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title reveal">Obras</h2>
-      <p class="sec-sub reveal d1">
-        Novelas y cuentos publicados. Recorré la obra completa por categoría.
-      </p>
+      <p class="sec-sub reveal d1">El texto iría acá.</p>
     </div>
 
     <div class="filtros reveal">
@@ -515,7 +491,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
         <h3>El yanqui</h3>
         <p class="ed">Mansalva</p>
-        <p>Una novela sobre el deseo, el desarraigo y los vínculos que nos transforman.</p>
+        <p>El texto iría acá.</p>
         <a href="#" class="ver">Ver más <span class="arr">→</span></a>
       </article>
 
@@ -524,7 +500,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
         <h3>Prefiero morir de amor</h3>
         <p class="ed">Bombal</p>
-        <p>Una historia sobre el amor llevado al extremo y las decisiones que nos definen.</p>
+        <p>El texto iría acá.</p>
         <a href="#" class="ver">Ver más <span class="arr">→</span></a>
       </article>
 
@@ -533,7 +509,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
         <h3>Aguas compartidas</h3>
         <p class="ed">Griselda García Editora</p>
-        <p>Cuerpos, competencia e intimidad: una novela sobre lo que se comparte y lo que se disputa.</p>
+        <p>El texto iría acá.</p>
         <a href="#" class="ver">Ver más <span class="arr">→</span></a>
       </article>
 
@@ -542,7 +518,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="top"><span class="tag">Cuentos</span><span class="anio">año</span></div>
         <h3>Luna de miel</h3>
         <p class="ed">Ediciones María Susana</p>
-        <p>Un libro de cuentos sobre lo doméstico, lo extraño y las grietas de la pareja.</p>
+        <p>El texto iría acá.</p>
         <a href="#" class="ver">Ver más <span class="arr">→</span></a>
       </article>
     </div>
@@ -557,14 +533,8 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div>
           <span class="dest-eyebrow">Obra destacada</span>
           <h2>El yanqui</h2>
-          <p class="desc">
-            La novela de Delfina Korn publicada por Mansalva. Una indagación
-            sobre el deseo, la mirada ajena y todo lo que se vuelve extranjero
-            cuando se lo nombra.
-          </p>
-          <p class="dest-quote">
-            “Volver no era llegar a un lugar: era encontrar el lugar tal como lo habíamos imaginado.”
-          </p>
+          <p class="desc">El texto iría acá.</p>
+          <p class="dest-quote">El texto iría acá.</p>
           <a href="#" class="btn btn--solid">Leer más <span class="arr">→</span></a>
         </div>
         <div class="dest-cover">
@@ -580,10 +550,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title reveal">Talleres<br>& clínica</h2>
-      <p class="sec-sub reveal d1">
-        Espacios para escribir, leer en grupo y sostener un proceso creativo
-        en el tiempo.
-      </p>
+      <p class="sec-sub reveal d1">El texto iría acá.</p>
     </div>
 
     <div class="talleres-grid">
@@ -592,7 +559,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="body">
           <span class="num">01 · Taller de escritura</span>
           <h3>Cómo encontrar la mirada propia</h3>
-          <p>Un taller para explorar la voz personal, leer en grupo y escribir con consigna y libertad.</p>
+          <p>El texto iría acá.</p>
           <a href="#contacto" class="lnk">Quiero participar <span class="arr">→</span></a>
         </div>
       </article>
@@ -602,7 +569,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="body">
           <span class="num">02 · Acompañamiento</span>
           <h3>Clínica de obra</h3>
-          <p>Trabajo uno a uno para que emerja la propia voz: lectura crítica y seguimiento de un proyecto.</p>
+          <p>El texto iría acá.</p>
           <a href="#contacto" class="lnk">Pedir info <span class="arr">→</span></a>
         </div>
       </article>
@@ -616,28 +583,25 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title reveal">Últimos textos</h2>
-      <p class="sec-sub reveal d1">
-        Una revista personal: apuntes sobre lectura, oficio y los temas que
-        rondan mientras escribo.
-      </p>
+      <p class="sec-sub reveal d1">El texto iría acá.</p>
     </div>
     <div class="posts">
       <article class="post reveal">
-        <div class="meta"><span class="cat">Oficio</span><span>16 May 2026</span></div>
-        <h3>Escribir con la ventana abierta</h3>
-        <p>Sobre el ruido, la distracción y por qué a veces el mundo de afuera mejora lo que escribimos.</p>
+        <div class="meta"><span class="cat">Categoría</span><span>Fecha</span></div>
+        <h3>El título iría acá</h3>
+        <p>El texto iría acá.</p>
         <a href="#" class="leer">Leer <span class="arr">→</span></a>
       </article>
       <article class="post reveal d1">
-        <div class="meta"><span class="cat">Lectura</span><span>02 May 2026</span></div>
-        <h3>Cinco libros que me enseñaron a empezar</h3>
-        <p>Una lista personal y arbitraria de primeras frases que todavía me siguen acompañando.</p>
+        <div class="meta"><span class="cat">Categoría</span><span>Fecha</span></div>
+        <h3>El título iría acá</h3>
+        <p>El texto iría acá.</p>
         <a href="#" class="leer">Leer <span class="arr">→</span></a>
       </article>
       <article class="post reveal d2">
-        <div class="meta"><span class="cat">Memoria</span><span>20 Abr 2026</span></div>
-        <h3>Lo que recuerda una casa</h3>
-        <p>Notas sobre el origen de mis ficciones y la geografía emocional de los lugares.</p>
+        <div class="meta"><span class="cat">Categoría</span><span>Fecha</span></div>
+        <h3>El título iría acá</h3>
+        <p>El texto iría acá.</p>
         <a href="#" class="leer">Leer <span class="arr">→</span></a>
       </article>
     </div>
@@ -649,22 +613,22 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title reveal">En sus palabras</h2>
-      <p class="sec-sub reveal d1">Frases que atraviesan la obra y los talleres de Delfina.</p>
+      <p class="sec-sub reveal d1">El texto iría acá.</p>
     </div>
     <div class="citas-grid">
       <figure class="cita reveal">
         <span class="mark">&#8220;</span>
-        <p class="txt">Escribir también es ordenar una forma de mirar.</p>
+        <p class="txt">El texto iría acá.</p>
         <figcaption class="from">Delfina Korn</figcaption>
       </figure>
       <figure class="cita reveal d1">
         <span class="mark">&#8220;</span>
-        <p class="txt">Toda memoria inventa algo para poder sobrevivir.</p>
+        <p class="txt">El texto iría acá.</p>
         <figcaption class="from">Delfina Korn</figcaption>
       </figure>
       <figure class="cita reveal d2">
         <span class="mark">&#8220;</span>
-        <p class="txt">Las palabras no explican el mundo: lo abren.</p>
+        <p class="txt">El texto iría acá.</p>
         <figcaption class="from">Delfina Korn</figcaption>
       </figure>
     </div>
@@ -677,28 +641,28 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title reveal">Prensa &<br>reconocimientos</h2>
-      <p class="sec-sub reveal d1">Entrevistas, reseñas y apariciones en medios.</p>
+      <p class="sec-sub reveal d1">El texto iría acá.</p>
     </div>
     <div class="prensa-grid reveal">
       <div class="prensa-item">
-        <span class="k">Entrevista</span>
-        <p class="h">“La memoria es el primer borrador de toda ficción.”</p>
-        <div class="src"><span>Medio</span><span class="y">año</span></div>
+        <span class="k">Categoría</span>
+        <p class="h">El texto iría acá.</p>
+        <div class="src"><span>Medio</span><span class="y">Año</span></div>
       </div>
       <div class="prensa-item">
-        <span class="k">Reseña</span>
-        <p class="h">Una novela sobre el deseo que no se deja domesticar.</p>
-        <div class="src"><span>Suplemento</span><span class="y">año</span></div>
+        <span class="k">Categoría</span>
+        <p class="h">El texto iría acá.</p>
+        <div class="src"><span>Medio</span><span class="y">Año</span></div>
       </div>
       <div class="prensa-item">
-        <span class="k">Medios</span>
-        <p class="h">Conversación sobre escritura y oficio.</p>
-        <div class="src"><span>Podcast</span><span class="y">año</span></div>
+        <span class="k">Categoría</span>
+        <p class="h">El texto iría acá.</p>
+        <div class="src"><span>Medio</span><span class="y">Año</span></div>
       </div>
       <div class="prensa-item">
-        <span class="k">Lectura</span>
-        <p class="h">Presentación y lectura de obra en vivo.</p>
-        <div class="src"><span>Ciclo literario</span><span class="y">año</span></div>
+        <span class="k">Categoría</span>
+        <p class="h">El texto iría acá.</p>
+        <div class="src"><span>Medio</span><span class="y">Año</span></div>
       </div>
     </div>
   </div>
@@ -709,11 +673,8 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   <div class="wrap cont-grid">
     <div>
       <span class="eyebrow reveal">Contacto</span>
-      <h2 class="cont-h reveal d1">Escribamos<br><span>algo juntas.</span></h2>
-      <p class="cont-p reveal d1">
-        Para talleres, clínica de obra, prensa o consultas. Leo todos los
-        mensajes y respondo personalmente.
-      </p>
+      <h2 class="cont-h reveal d1">El título <span>iría acá</span></h2>
+      <p class="cont-p reveal d1">El texto iría acá.</p>
       <a href="mailto:kornescritora@gmail.com" class="cont-line reveal d2">
         <b>mail:</b> kornescritora@gmail.com
       </a>
