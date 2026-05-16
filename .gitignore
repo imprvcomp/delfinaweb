@@ -1,0 +1,9 @@
+# Credenciales — nunca subir
+.gittoken
+*.env
+.env
+
+# Sistema
+Thumbs.db
+.DS_Store
+desktop.ini
