@@ -180,7 +180,7 @@ header.scrolled{
 /* =========================================================
    6. SOBRE LA AUTORA
    ========================================================= */
-.about-grid{ display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(34px,6vw,90px); align-items:center; }
+.about-grid{ display:grid; grid-template-columns:1.2fr .8fr; gap:clamp(34px,6vw,90px); align-items:center; }
 .about-img{ position:relative; aspect-ratio:3/3.8; border-radius:var(--radio);
   overflow:hidden; border:1.5px solid var(--tinta); box-shadow:10px 10px 0 var(--lavanda);
   background:linear-gradient(150deg,var(--crema-2),var(--rosa)); }
@@ -412,7 +412,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
       <a href="#sobre">Sobre la autora</a>
       <a href="#obras">Obras</a>
       <a href="#talleres">Talleres</a>
-      <a href="#textos">Textos</a>
+      <a href="#textos">Cuentos</a>
       <a href="#prensa">Prensa</a>
       <a href="#contacto">Contacto</a>
     </nav>
@@ -458,14 +458,14 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
 <!-- EDITAR: reemplazar texto biográfico por la bio real de Delfina. -->
 <section class="section" id="sobre">
   <div class="wrap about-grid">
-    <div class="about-img reveal">
-      <img src="assets/delfina-korn.jpeg" alt="Retrato de Delfina Korn" />
-    </div>
     <div class="about-copy">
       <span class="eyebrow reveal">Sobre la autora</span>
       <h2 class="about-h reveal d1">El título iría acá</h2>
       <p class="about-p reveal d1">El texto iría acá.</p>
       <blockquote class="pull-quote reveal d2">El texto iría acá.</blockquote>
+    </div>
+    <div class="about-img reveal">
+      <img src="assets/delfina-korn.jpeg" alt="Retrato de Delfina Korn" />
     </div>
   </div>
 </section>
@@ -582,7 +582,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
 <section class="section" id="textos">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title reveal">Últimos textos</h2>
+      <h2 class="sec-title reveal">Cuentos en la web</h2>
       <p class="sec-sub reveal d1">El texto iría acá.</p>
     </div>
     <div class="posts">
@@ -612,7 +612,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
 <section class="section citas" id="citas">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title reveal">En sus palabras</h2>
+      <h2 class="sec-title reveal">Artículos periodísticos</h2>
       <p class="sec-sub reveal d1">El texto iría acá.</p>
     </div>
     <div class="citas-grid">
@@ -725,7 +725,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         </div>
         <div class="foot-col">
           <h4>Más</h4>
-          <a href="#textos">Textos</a>
+          <a href="#textos">Cuentos</a>
           <a href="#prensa">Prensa</a>
           <a href="#contacto">Contacto</a>
         </div>
