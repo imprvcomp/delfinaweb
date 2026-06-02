@@ -382,16 +382,27 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   padding:.15rem .55rem; border-radius:var(--radio);
   transition:.25s var(--ease); z-index:2; cursor:pointer; }
 .modal-close:hover{ background:var(--tinta); color:var(--crema); }
-.modal-head{ padding:clamp(28px,3.4vw,46px) clamp(28px,3.4vw,46px) 0; }
-.modal-head .eyebrow{ font-size:.78rem; }
-.modal-head h3{ font-size:clamp(1.6rem,3.2vw,2.4rem); margin-top:.75rem;
-  text-transform:uppercase; letter-spacing:-.01em; font-weight:700; }
-.modal-body{ padding:1.3rem clamp(28px,3.4vw,46px) clamp(28px,3.4vw,46px);
+.modal-head{ display:flex; gap:1.4rem; align-items:flex-start;
+  padding:clamp(28px,3.4vw,46px) clamp(28px,3.4vw,46px) 0; }
+.modal-cover{ flex:0 0 clamp(110px,15vw,150px); aspect-ratio:2/3;
+  border:1.5px solid var(--tinta); border-radius:var(--radio); overflow:hidden;
+  box-shadow:6px 6px 0 var(--lavanda); background:var(--crema-2); }
+.modal-cover img{ width:100%; height:100%; object-fit:cover; display:block; }
+.modal-info{ flex:1; min-width:0; padding-top:.3rem; }
+.modal-info .eyebrow{ font-size:.78rem; }
+.modal-info h3{ font-size:clamp(1.5rem,3vw,2.3rem); margin-top:.75rem;
+  text-transform:uppercase; letter-spacing:-.01em; font-weight:700; line-height:1.05; }
+.modal-body{ padding:1.6rem clamp(28px,3.4vw,46px) clamp(28px,3.4vw,46px);
   overflow-y:auto; }
+.modal-body .modal-section{ display:block; margin-bottom:1.1rem; font-size:.78rem; }
 .modal-body p{ font-size:1rem; line-height:1.72; margin-bottom:1.05rem; color:var(--tinta); }
 .modal-body p:last-child{ margin-bottom:0; }
 .modal-body .firma{ display:block; margin-top:1.4rem; font-weight:700;
   color:var(--lavanda-d); letter-spacing:.04em; }
+@media (max-width:560px){
+  .modal-head{ flex-direction:column; align-items:center; text-align:center; }
+  .modal-cover{ flex:0 0 auto; width:140px; }
+}
 @keyframes modalFade{ from{ opacity:0 } to{ opacity:1 } }
 @keyframes modalRise{ from{ opacity:0; transform:translateY(24px) } to{ opacity:1; transform:none } }
 @media (prefers-reduced-motion:reduce){
@@ -557,7 +568,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
         <h3>El yanqui</h3>
         <p class="ed">Mansalva</p>
-        <p>El texto iría acá.</p>
+        <p>Una chica de diecisiete años, un amor imposible y los perfumes secretos que guardará en el freezer para descongelar cada vez que necesite recordarlo.</p>
         <button type="button" class="ver" data-book="el-yanqui">Ver más <span class="arr">→</span></button>
       </article>
 
@@ -566,7 +577,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
         <h3>Prefiero morir de amor</h3>
         <p class="ed">Bombal</p>
-        <p>El texto iría acá.</p>
+        <p>Cuentos atravesados de viajes, enredos amorosos y malentendidos: comedia y drama, todo al mismo tiempo y superpuesto.</p>
         <button type="button" class="ver" data-book="prefiero-morir-de-amor">Ver más <span class="arr">→</span></button>
       </article>
 
@@ -575,7 +586,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
         <h3>Aguas compartidas</h3>
         <p class="ed">Griselda García Editora</p>
-        <p>El texto iría acá.</p>
+        <p>Relatos que no se atienen a nada: desbordan. Voces femeninas, latinas y africanas, que se plantan en el mundo.</p>
         <button type="button" class="ver" data-book="aguas-compartidas">Ver más <span class="arr">→</span></button>
       </article>
 
@@ -782,10 +793,18 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   <div class="modal-dialog">
     <button type="button" class="modal-close" data-close aria-label="Cerrar">×</button>
     <div class="modal-head">
-      <span class="eyebrow" id="modalEditorial">Editorial</span>
-      <h3 id="modalTitle">Título</h3>
+      <div class="modal-cover">
+        <img id="modalCover" src="" alt="" />
+      </div>
+      <div class="modal-info">
+        <span class="eyebrow" id="modalEditorial">Editorial</span>
+        <h3 id="modalTitle">Título</h3>
+      </div>
     </div>
-    <div class="modal-body" id="modalBody"></div>
+    <div class="modal-body">
+      <span class="eyebrow modal-section">Contratapa</span>
+      <div id="modalBody"></div>
+    </div>
   </div>
 </div>
 
@@ -936,14 +955,17 @@ const bookModal = document.getElementById('bookModal');
 const bookModalTitle = document.getElementById('modalTitle');
 const bookModalEd = document.getElementById('modalEditorial');
 const bookModalBody = document.getElementById('modalBody');
+const bookModalCover = document.getElementById('modalCover');
 
 function openBookModal(slug){
   const b = BOOKS_DETAIL[slug];
   if (!b) return;
   bookModalTitle.textContent = b.title;
   bookModalEd.textContent = b.editorial;
+  bookModalCover.src = `assets/${slug}.jpeg`;
+  bookModalCover.alt = `Tapa de ${b.title}`;
   bookModalBody.innerHTML = b.body;
-  bookModalBody.scrollTop = 0;
+  bookModalBody.parentElement.scrollTop = 0;
   bookModal.classList.add('open');
   bookModal.setAttribute('aria-hidden','false');
   document.body.style.overflow = 'hidden';
