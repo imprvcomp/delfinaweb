@@ -271,17 +271,45 @@ header.scrolled{
 .taller:hover .lnk .arr{ transform:translateX(5px); }
 
 /* =========================================================
-   10. TEXTOS / BLOG
+   10. CUENTOS EN LA WEB
    ========================================================= */
-.posts{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,2.4vw,34px); }
-.post{ border-top:2px solid var(--tinta); padding-top:1.2rem; transition:border-color .4s var(--ease); }
-.post:hover{ border-color:var(--lavanda); }
-.post .meta{ display:flex; gap:1rem; font-size:.8rem; color:var(--gris); margin-bottom:.9rem; }
+.posts{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2vw,28px); }
+.post{
+  position:relative; background:var(--crema);
+  border:1.5px solid var(--tinta); border-radius:var(--radio);
+  padding:clamp(24px,2.6vw,34px);
+  display:flex; flex-direction:column; min-height:280px;
+  transition:transform .45s var(--ease), box-shadow .45s var(--ease), background .45s var(--ease);
+}
+.post:hover{ transform:translate(-3px,-3px); box-shadow:8px 8px 0 var(--lavanda); }
+.post:nth-child(3n+2){ background:var(--crema-2); }
+.post .num{ font-size:.82rem; font-weight:700; color:var(--lavanda-d); letter-spacing:.22em; }
+.post .ext{
+  position:absolute; top:1rem; right:1.1rem;
+  font-size:1.1rem; color:var(--gris); line-height:1;
+  transition:transform .35s var(--ease), color .35s var(--ease);
+}
+.post:hover .ext{ color:var(--lavanda-d); transform:translate(3px,-3px); }
+.post .meta{
+  font-size:.74rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--gris); margin:.9rem 0;
+  display:flex; flex-wrap:wrap; gap:.4rem 1rem;
+}
 .post .meta .cat{ color:var(--lavanda-d); font-weight:700; }
-.post h3{ font-size:1.3rem; line-height:1.22; margin-bottom:.7rem; transition:color .35s var(--ease); }
+.post h3{
+  font-size:clamp(1.2rem,2vw,1.55rem); line-height:1.18;
+  margin-bottom:1rem; text-transform:uppercase; font-weight:700;
+  letter-spacing:-.01em; transition:color .3s var(--ease);
+}
 .post:hover h3{ color:var(--lavanda-d); }
-.post p{ color:var(--gris); font-size:.9rem; margin-bottom:1rem; }
-.post .leer{ font-size:.85rem; font-weight:700; display:inline-flex; gap:.45rem; align-items:center; }
+.post p{ font-size:.9rem; color:var(--gris); margin-bottom:1.3rem;
+  font-style:italic; flex:1; }
+.post .leer{
+  font-size:.85rem; font-weight:700;
+  display:inline-flex; gap:.45rem; align-items:center;
+  color:var(--tinta); border-top:1px solid var(--linea);
+  padding-top:1rem; margin-top:auto;
+}
 .post .leer .arr{ transition:transform .35s var(--ease); }
 .post:hover .leer .arr{ transform:translateX(5px); }
 
@@ -667,22 +695,52 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
     </div>
     <div class="posts">
       <article class="post reveal">
-        <div class="meta"><span class="cat">La Primera Piedra</span><span>May 2022</span></div>
+        <span class="num">01 / 06</span>
+        <span class="ext" aria-hidden="true">↗</span>
+        <div class="meta"><span class="cat">La Primera Piedra</span><span>Cuento · May 2022</span></div>
         <h3>Las intrusas</h3>
         <p>El texto iría acá.</p>
         <a href="https://www.laprimerapiedra.com.ar/2022/05/las-intursas-cuento-de-delfina-korn/" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
       </article>
       <article class="post reveal d1">
-        <div class="meta"><span class="cat">Faxsit</span><span>Ago 2020</span></div>
+        <span class="num">02 / 06</span>
+        <span class="ext" aria-hidden="true">↗</span>
+        <div class="meta"><span class="cat">Faxsit</span><span>Cuento · Ago 2020</span></div>
         <h3>Fool</h3>
         <p>El texto iría acá.</p>
         <a href="https://faxsit.wordpress.com/2020/08/27/fool/" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
       </article>
       <article class="post reveal d2">
+        <span class="num">03 / 06</span>
+        <span class="ext" aria-hidden="true">↗</span>
         <div class="meta"><span class="cat">Clarín · Mundos íntimos</span><span>Crónica</span></div>
         <h3>Quisimos ser diferentes y logramos seguir juntos</h3>
         <p>El texto iría acá.</p>
         <a href="https://www.clarin.com/sociedad/mundos-intimos-amor-quisimos-diferentes-logramos-seguir-juntos_0_r1ugLN4Vb.html" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
+      </article>
+      <article class="post reveal">
+        <span class="num">04 / 06</span>
+        <span class="ext" aria-hidden="true">↗</span>
+        <div class="meta"><span class="cat">La Agenda</span><span>Cuento</span></div>
+        <h3>Amor abstracto</h3>
+        <p>El texto iría acá.</p>
+        <a href="https://laagenda.buenosaires.gob.ar/contenido/19409-amor-abstracto" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
+      </article>
+      <article class="post reveal d1">
+        <span class="num">05 / 06</span>
+        <span class="ext" aria-hidden="true">↗</span>
+        <div class="meta"><span class="cat">Urgente24</span><span>Cuento</span></div>
+        <h3>La enferma de amor</h3>
+        <p>El texto iría acá.</p>
+        <a href="https://urgente24.com/ocio/lectura/la-enferma-de-amor-un-cuento-para-reirse-y-llorar-al-mismo-tiempo" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
+      </article>
+      <article class="post reveal d2">
+        <span class="num">06 / 06</span>
+        <span class="ext" aria-hidden="true">↗</span>
+        <div class="meta"><span class="cat">Eterna Cadencia</span><span>Cuento</span></div>
+        <h3>La dueña de la pava</h3>
+        <p>El texto iría acá.</p>
+        <a href="https://eternacadencia.com.ar/blog/la-duena-de-la-pava" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
       </article>
     </div>
   </div>
