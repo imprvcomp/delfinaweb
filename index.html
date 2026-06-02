@@ -331,19 +331,53 @@ header.scrolled{
 .cita:nth-child(2) .from{ color:rgba(255,255,255,.85); }
 
 /* =========================================================
-   12. PRENSA
+   12. PRENSA — scroll horizontal
    ========================================================= */
-.prensa-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:0;
-  border:1.5px solid var(--tinta); border-radius:var(--radio); overflow:hidden; }
-.prensa-item{ background:var(--crema); padding:clamp(24px,2.6vw,36px); min-height:220px;
-  display:flex; flex-direction:column; justify-content:space-between;
-  border-right:1.5px solid var(--tinta); transition:background .35s var(--ease); }
-.prensa-item:last-child{ border-right:none; }
-.prensa-item:hover{ background:var(--crema-2); }
+.prensa-scroll{ position:relative; }
+.prensa-strip{
+  display:flex; gap:clamp(14px,1.6vw,22px);
+  overflow-x:auto; scroll-snap-type:x mandatory;
+  padding:.4rem .4rem 1.6rem;
+  margin:-.4rem -.4rem 0;
+  scrollbar-width:thin;
+  scrollbar-color:var(--lavanda) var(--crema-2);
+  scroll-behavior:smooth;
+}
+.prensa-strip::-webkit-scrollbar{ height:8px; }
+.prensa-strip::-webkit-scrollbar-track{ background:var(--crema-2); border-radius:4px; }
+.prensa-strip::-webkit-scrollbar-thumb{ background:var(--lavanda); border-radius:4px; }
+.prensa-item{
+  flex:0 0 clamp(260px,28vw,330px);
+  scroll-snap-align:start;
+  background:var(--crema);
+  border:1.5px solid var(--tinta); border-radius:var(--radio);
+  padding:clamp(22px,2.4vw,30px); min-height:230px;
+  display:flex; flex-direction:column;
+  position:relative;
+  transition:transform .4s var(--ease), box-shadow .4s var(--ease);
+  text-decoration:none; color:inherit;
+}
+.prensa-item:hover{ transform:translate(-3px,-3px); box-shadow:6px 6px 0 var(--lavanda); }
 .prensa-item .k{ font-size:.74rem; letter-spacing:.12em; text-transform:uppercase; color:var(--lavanda-d); font-weight:700; }
-.prensa-item .h{ font-size:1.15rem; line-height:1.3; margin:1rem 0; font-weight:700; }
-.prensa-item .src{ font-size:.82rem; color:var(--gris); display:flex; justify-content:space-between; align-items:center; }
+.prensa-item .h{ font-size:1.05rem; line-height:1.3; margin:1rem 0; font-weight:700; flex:1; }
+.prensa-item .src{ font-size:.78rem; color:var(--gris); display:flex; justify-content:space-between; align-items:center; gap:.5rem; padding-top:.7rem; border-top:1px solid var(--linea); margin-top:auto; }
 .prensa-item .src .y{ color:var(--tinta); font-weight:700; }
+.prensa-item .ext{ position:absolute; top:1rem; right:1.1rem; font-size:1rem; color:var(--gris); transition:.3s var(--ease); }
+.prensa-item:hover .ext{ color:var(--lavanda-d); transform:translate(2px,-2px); }
+.prensa-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:46px; height:46px; border-radius:50%;
+  background:var(--crema); border:1.5px solid var(--tinta);
+  font-family:var(--mono); font-size:1.2rem; font-weight:700; color:var(--tinta);
+  display:flex; align-items:center; justify-content:center;
+  z-index:5; box-shadow:3px 3px 0 var(--lavanda);
+  cursor:pointer; transition:background .3s var(--ease), color .3s var(--ease), opacity .3s var(--ease);
+}
+.prensa-nav:hover{ background:var(--lavanda); color:#fff; }
+.prensa-nav.prev{ left:-22px; }
+.prensa-nav.next{ right:-22px; }
+.prensa-nav[disabled]{ opacity:.3; cursor:default; }
+@media (max-width:760px){ .prensa-nav{ display:none; } }
 
 /* =========================================================
    13. CONTACTO
@@ -458,8 +492,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   .hero-grid,.about-grid,.dest-grid,.cont-grid{ grid-template-columns:1fr; }
   .hero-visual,.about-img{ max-width:440px; margin:0 auto; }
   .obras-grid{ grid-template-columns:repeat(2,1fr); }
-  .posts,.citas-grid,.prensa-grid{ grid-template-columns:repeat(2,1fr); }
-  .prensa-item:nth-child(2){ border-right:none; }
+  .posts,.citas-grid{ grid-template-columns:repeat(2,1fr); }
   .cita:nth-child(2){ transform:none; }
 }
 @media (max-width:760px){
@@ -470,9 +503,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
     padding:0 2rem; z-index:999; transform:translateX(100%); transition:transform .5s var(--ease); }
   .menu.mobile.show{ transform:translateX(0); }
   .menu.mobile a{ font-size:1.7rem; font-weight:700; }
-  .obras-grid,.posts,.citas-grid,.talleres-grid,.prensa-grid{ grid-template-columns:1fr; }
-  .prensa-item{ border-right:none; border-bottom:1.5px solid var(--tinta); }
-  .prensa-item:last-child{ border-bottom:none; }
+  .obras-grid,.posts,.citas-grid,.talleres-grid{ grid-template-columns:1fr; }
   .sec-head{ flex-direction:column; align-items:flex-start; }
   .hero-card{ position:relative; width:100%; right:0; bottom:0; margin-top:1.5rem; }
   .float-tag{ left:0; }
@@ -774,27 +805,110 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
       <h2 class="sec-title reveal">Prensa &<br>reconocimientos</h2>
       <p class="sec-sub reveal d1">El texto iría acá.</p>
     </div>
-    <div class="prensa-grid reveal">
-      <div class="prensa-item">
-        <span class="k">Categoría</span>
-        <p class="h">El texto iría acá.</p>
-        <div class="src"><span>Medio</span><span class="y">Año</span></div>
+    <div class="prensa-scroll reveal">
+      <button type="button" class="prensa-nav prev" id="prensaPrev" aria-label="Anterior">←</button>
+      <div class="prensa-strip" id="prensaStrip">
+
+        <a class="prensa-item" href="https://www.pagina12.com.ar/182092-escribo-sobre-lo-que-conozco/" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Entrevista</span>
+          <p class="h">Escribo sobre lo que conozco</p>
+          <div class="src"><span>Página/12</span><span class="y">—</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://laagenda.buenosaires.gob.ar/contenido/14037-a-toda-velocidad" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Nota</span>
+          <p class="h">A toda velocidad</p>
+          <div class="src"><span>La Agenda</span><span class="y">—</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://victorica.medium.com/la-otra-realidad-de-este-domingo-juan-laxagueborde-fd00ac8a391" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Reseña</span>
+          <p class="h">La otra realidad de este domingo</p>
+          <div class="src"><span>Medium · Juan Laxagueborde</span><span class="y">—</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://www.radionacional.com.ar/la-literatura-es-tratar-de-escarbar-un-poquito-en-el-misterio-del-universo/" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Entrevista</span>
+          <p class="h">La literatura es tratar de escarbar un poquito en el misterio del universo</p>
+          <div class="src"><span>Radio Nacional</span><span class="y">—</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://latransformacion.ar/entrevista-delfina-korn/" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Entrevista</span>
+          <p class="h">Entrevista a Delfina Korn</p>
+          <div class="src"><span>La Transformación</span><span class="y">—</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://www.infobae.com/leamos/2022/05/31/delfina-korn-los-pensamientos-estupidos-esconden-una-gran-riqueza-para-hacer-literatura/" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Entrevista</span>
+          <p class="h">Los pensamientos estúpidos esconden una gran riqueza para hacer literatura</p>
+          <div class="src"><span>Infobae · Leamos</span><span class="y">2022</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://eternacadencia.com.ar/blog/nueve-preguntas-a-delfina-korn" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Entrevista</span>
+          <p class="h">Nueve preguntas a Delfina Korn</p>
+          <div class="src"><span>Eterna Cadencia</span><span class="y">—</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://www.polvo.com.ar/2019/03/la-risa-como-venganza/" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Reseña</span>
+          <p class="h">La risa como venganza</p>
+          <div class="src"><span>Polvo</span><span class="y">2019</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://www.infobae.com/cultura/2019/05/31/delfina-korn-me-mueve-el-deseo-de-quitar-un-poco-los-velos-que-envuelven-el-alma-humana/" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Entrevista</span>
+          <p class="h">Me mueve el deseo de quitar un poco los velos que envuelven el alma humana</p>
+          <div class="src"><span>Infobae · Cultura</span><span class="y">2019</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://www.argentina.gob.ar/noticias/delfina-korn-sara-gallardo-fue-una-gran-vanguardista" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Nota</span>
+          <p class="h">Sara Gallardo fue una gran vanguardista</p>
+          <div class="src"><span>Argentina.gob.ar</span><span class="y">—</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://www.pagina12.com.ar/diario/suplementos/las12/13-10675-2016-06-24.html" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Nota</span>
+          <p class="h">Suplemento Las12</p>
+          <div class="src"><span>Página/12 · Las12</span><span class="y">2016</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://maromconnect.com/nuevas-voces-delfina-korn-cuentos-de-varias-pieles/" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Nota</span>
+          <p class="h">Nuevas voces: cuentos de varias pieles</p>
+          <div class="src"><span>Marom Connect</span><span class="y">—</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://radioytelevisionriojana.com.ar/articulo/delfina-korn-los-pensamientos-estupidos-esconden-una-gran-riqueza-para-hacer-literatura.php" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Entrevista</span>
+          <p class="h">Los pensamientos estúpidos esconden una gran riqueza para hacer literatura</p>
+          <div class="src"><span>Radio y TV Riojana</span><span class="y">—</span></div>
+        </a>
+
+        <a class="prensa-item" href="https://www.eldestapeweb.com/cultura/argentina/delfina-korn-el-humor-es-la-unica-pieza-posible-para-sostener-la-vida--202252316550" target="_blank" rel="noopener">
+          <span class="ext" aria-hidden="true">↗</span>
+          <span class="k">Entrevista</span>
+          <p class="h">El humor es la única pieza posible para sostener la vida</p>
+          <div class="src"><span>El Destape · Cultura</span><span class="y">2022</span></div>
+        </a>
+
       </div>
-      <div class="prensa-item">
-        <span class="k">Categoría</span>
-        <p class="h">El texto iría acá.</p>
-        <div class="src"><span>Medio</span><span class="y">Año</span></div>
-      </div>
-      <div class="prensa-item">
-        <span class="k">Categoría</span>
-        <p class="h">El texto iría acá.</p>
-        <div class="src"><span>Medio</span><span class="y">Año</span></div>
-      </div>
-      <div class="prensa-item">
-        <span class="k">Categoría</span>
-        <p class="h">El texto iría acá.</p>
-        <div class="src"><span>Medio</span><span class="y">Año</span></div>
-      </div>
+      <button type="button" class="prensa-nav next" id="prensaNext" aria-label="Siguiente">→</button>
     </div>
   </div>
 </section>
@@ -1037,6 +1151,24 @@ bookModal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('cl
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && bookModal.classList.contains('open')) closeBookModal();
 });
+
+/* ========== Scroll horizontal de Prensa ========== */
+const prensaStrip = document.getElementById('prensaStrip');
+const prensaPrev = document.getElementById('prensaPrev');
+const prensaNext = document.getElementById('prensaNext');
+if (prensaStrip && prensaPrev && prensaNext){
+  const scrollStep = () => Math.min(prensaStrip.clientWidth * 0.85, 400);
+  prensaPrev.addEventListener('click', () => prensaStrip.scrollBy({ left: -scrollStep(), behavior: 'smooth' }));
+  prensaNext.addEventListener('click', () => prensaStrip.scrollBy({ left: scrollStep(), behavior: 'smooth' }));
+  const updateNav = () => {
+    const max = prensaStrip.scrollWidth - prensaStrip.clientWidth - 2;
+    prensaPrev.toggleAttribute('disabled', prensaStrip.scrollLeft <= 2);
+    prensaNext.toggleAttribute('disabled', prensaStrip.scrollLeft >= max);
+  };
+  prensaStrip.addEventListener('scroll', updateNav, { passive: true });
+  window.addEventListener('resize', updateNav);
+  updateNav();
+}
 </script>
 </body>
 </html>
