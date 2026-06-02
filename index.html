@@ -363,6 +363,44 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   padding-top:1.8rem; font-size:.82rem; color:rgba(250,244,230,.55); }
 
 /* =========================================================
+   14b. MODAL DE DETALLE DE LIBRO
+   ========================================================= */
+.modal{ position:fixed; inset:0; z-index:2000; display:none;
+  align-items:center; justify-content:center;
+  padding:clamp(16px,4vw,40px); }
+.modal.open{ display:flex; }
+.modal-backdrop{ position:absolute; inset:0; background:rgba(30,30,30,.7);
+  backdrop-filter:blur(4px); animation:modalFade .25s ease; cursor:pointer; }
+.modal-dialog{ position:relative; background:var(--crema);
+  border:1.5px solid var(--tinta); border-radius:var(--radio);
+  box-shadow:12px 12px 0 var(--lavanda);
+  max-width:780px; width:100%; max-height:88vh;
+  display:flex; flex-direction:column;
+  animation:modalRise .4s var(--ease); }
+.modal-close{ position:absolute; top:.7rem; right:.9rem;
+  font-family:var(--mono); font-size:1.7rem; line-height:1;
+  padding:.15rem .55rem; border-radius:var(--radio);
+  transition:.25s var(--ease); z-index:2; cursor:pointer; }
+.modal-close:hover{ background:var(--tinta); color:var(--crema); }
+.modal-head{ padding:clamp(28px,3.4vw,46px) clamp(28px,3.4vw,46px) 0; }
+.modal-head .eyebrow{ font-size:.78rem; }
+.modal-head h3{ font-size:clamp(1.6rem,3.2vw,2.4rem); margin-top:.75rem;
+  text-transform:uppercase; letter-spacing:-.01em; font-weight:700; }
+.modal-body{ padding:1.3rem clamp(28px,3.4vw,46px) clamp(28px,3.4vw,46px);
+  overflow-y:auto; }
+.modal-body p{ font-size:1rem; line-height:1.72; margin-bottom:1.05rem; color:var(--tinta); }
+.modal-body p:last-child{ margin-bottom:0; }
+.modal-body .firma{ display:block; margin-top:1.4rem; font-weight:700;
+  color:var(--lavanda-d); letter-spacing:.04em; }
+@keyframes modalFade{ from{ opacity:0 } to{ opacity:1 } }
+@keyframes modalRise{ from{ opacity:0; transform:translateY(24px) } to{ opacity:1; transform:none } }
+@media (prefers-reduced-motion:reduce){
+  .modal-backdrop, .modal-dialog{ animation:none; }
+}
+/* botón .ver dentro de libro (era <a>, ahora <button>) */
+.libro .ver{ padding:0; background:none; border:none; }
+
+/* =========================================================
    15. ANIMACIÓN DE APARICIÓN AL SCROLL
    ========================================================= */
 .reveal{ opacity:0; transform:translateY(30px); transition:opacity .9s var(--ease), transform .9s var(--ease); }
@@ -520,7 +558,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <h3>El yanqui</h3>
         <p class="ed">Mansalva</p>
         <p>El texto iría acá.</p>
-        <a href="#" class="ver">Ver más <span class="arr">→</span></a>
+        <button type="button" class="ver" data-book="el-yanqui">Ver más <span class="arr">→</span></button>
       </article>
 
       <article class="libro reveal d1" data-cat="novela">
@@ -529,7 +567,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <h3>Prefiero morir de amor</h3>
         <p class="ed">Bombal</p>
         <p>El texto iría acá.</p>
-        <a href="#" class="ver">Ver más <span class="arr">→</span></a>
+        <button type="button" class="ver" data-book="prefiero-morir-de-amor">Ver más <span class="arr">→</span></button>
       </article>
 
       <article class="libro reveal d2" data-cat="novela">
@@ -538,7 +576,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <h3>Aguas compartidas</h3>
         <p class="ed">Griselda García Editora</p>
         <p>El texto iría acá.</p>
-        <a href="#" class="ver">Ver más <span class="arr">→</span></a>
+        <button type="button" class="ver" data-book="aguas-compartidas">Ver más <span class="arr">→</span></button>
       </article>
 
       <article class="libro reveal d3" data-cat="cuento">
@@ -547,7 +585,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <h3>Luna de miel</h3>
         <p class="ed">Ediciones María Susana</p>
         <p>El texto iría acá.</p>
-        <a href="#" class="ver">Ver más <span class="arr">→</span></a>
+        <button type="button" class="ver" data-book="luna-de-miel">Ver más <span class="arr">→</span></button>
       </article>
     </div>
   </div>
@@ -738,6 +776,19 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
 
 </main>
 
+<!-- ===================== MODAL DETALLE DE LIBRO ===================== -->
+<div class="modal" id="bookModal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modalTitle">
+  <div class="modal-backdrop" data-close></div>
+  <div class="modal-dialog">
+    <button type="button" class="modal-close" data-close aria-label="Cerrar">×</button>
+    <div class="modal-head">
+      <span class="eyebrow" id="modalEditorial">Editorial</span>
+      <h3 id="modalTitle">Título</h3>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
 <!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="wrap">
@@ -841,6 +892,75 @@ form.addEventListener('submit', e => {
 
 /* ========== Año dinámico ========== */
 document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ========== Modal de detalle de libro ========== */
+const BOOKS_DETAIL = {
+  'aguas-compartidas': {
+    title: 'Aguas compartidas',
+    editorial: 'Novela · Griselda García Editora',
+    body: `
+<p>Los relatos de Delfina Korn no se atienen a nada: desbordan. Sus personajes, de diferentes nacionalidades y creencias religiosas, parecen movidos por la sangre. Una porteña mantiene un amor a distancia con un paraguayo hasta que se entera que espera un hijo de otra. Otra siente que con su sola presencia en el hospital va a curar a su abuela. Una estudiante de danza nos cuenta cómo hace para abandonar las clases de su posesiva profesora senegalesa.</p>
+<p>La idea de lo distinto atraviesa al lector durante todo el libro, como cuando la narradora de “La pileta equivocada” entra a la casa de su amiga peruana: “Había para mí algo reconfortante en ese mundo, en participar de esas fiestas. Yo era casi la única argentina que estaba invitada. Era como estar en otro país. En esa sociedad, a diferencia de la mía, las cosas estaban claras. Contra una pared iban las mujeres; contra la otra, los hombres. Ellos bebían, ellas sonreían. Todo el mundo reía y todo el mundo sabía qué lugar ocupaba”.</p>
+<p>En estos relatos narrados por mujeres, Korn centra su atención en los matices de las voces femeninas, ya sean latinas o africanas, como si tuviera la certeza de que encontrar una voz y sostenerla es una manera de plantarse en el mundo.</p>
+    `
+  },
+  'el-yanqui': {
+    title: 'El yanqui',
+    editorial: 'Novela · Mansalva',
+    body: `
+<p>Una chica de diecisiete años se resiste a mirarse al espejo mientras viaja en un ascensor junto a su amor imposible, un adolescente millonario y revulsivo, rumbo al encuentro con su futuro. Al igual que los perfumes secretos que ella guardará celosamente en un frasquito de cristal en el freezer de su heladera para descongelarlos cada vez que necesite recordar el perfume de su amor, las escenas de esta novela son verdaderos tesoros, momentos seleccionados en la vida de una chica que se va transformando en mujer adulta.</p>
+<p>¿Qué significa ser adolescente, ser “menor de edad”, ser adulta, ser vieja? Con gran sabiduría, El Yanqui nos recuerda que estas categorías se relacionan con la tutela. Y así, las mejores escenas de esta historia estarán compartidas por una chica y su mejor amiga, pero también por sus abuelas, bajo la tutela de madres y padres. Amigas enredadas entre acolchados con sus abuelas, recibiendo billetes de sus manos por debajo del mantel, o revisando pasaportes con el fin de estar listas para, finalmente, burlar la vigilancia y escapar a la noche mientras la madre duerme. Es claro que la protagonista de esta historia sabe.</p>
+<p>Sabe que la vida no puede esperar, y aquí, las ganas de romper el encierro son capaces incluso de quebrar un cajón funerario. También es claro que la adolescencia es el momento en que comenzamos a contar y a contarnos un relato posible de nuestra vida un poco más allá de los lazos familiares, para poder decirle al mundo nuestro nombre. Esta novela de Delfina Korn nos conmociona, porque nos regala escenas que muy bien conocemos: la pasión adolescente por salir al mundo, la certeza total de un destino, pero también la sabiduría de vivir y sobrevivir a través de intensos lazos de amor y amistad.</p>
+<p>“Una vez escuché decir que todos los amores empiezan por una gran curiosidad”, nos cuenta la narradora. Es esa curiosidad, y una gran sabiduría, lo que mueve las páginas de El Yanqui.</p>
+    `
+  },
+  'prefiero-morir-de-amor': {
+    title: 'Prefiero morir de amor',
+    editorial: 'Bombal',
+    body: `
+<p>“Yo lo que hago cuando estoy así, embrujada, es hablar con todo el mundo” dice la narradora de unos de estos cuentos. Y cuando dice “todo el mundo”, está siendo totalmente literal. Un cobayo temeroso de cruzarse con su ex, un karateka disfrazado de ninja, fiestas de Purim, conductores radiales tan enamorados como al borde del suicidio, viajes a África, un médico llamado Yefri Connel pero más conocido como Doctor Papito: todo esto y mucho más encuentra una manera de habitar con naturalidad y soltura los mundos que Delfina Korn arma para nosotros.</p>
+<p>Atravesados de viajes, de enredos amorosos, de malentendidos y de problemas para comunicarse, estos cuentos son chapuzones veloces en medio del torbellino, son aceleración y fuga hacia adelante, son imaginación desbocada, desparpajo y humor zumbón, son depresión y corazones destrozados, todo al mismo tiempo y superpuesto: comedia y drama. Y entre tanto, en las pequeñas pausas que los personajes hacen para permitirse respirar, una mirada lúcida e implacable, capaz de definir un estado de ánimo, una verdad innegable o una observación sabia mediante el único golpe seco de un latigazo. Solo para después, enseguida y a todo galope, seguir preguntándose: ¿dónde estará el futuro?, ¿qué será?, ¿cómo será detenerse?, ¿cómo será frenar?.</p>
+<span class="firma">— Federico Falco</span>
+<p>¿Cómo será atravesar la vida con una sensibilidad parecida a la de las narradoras de este libro? Una sensibilidad que puede relatar los hechos del mundo sin jamás endurecerse para tomar distancia, al contrario transitando por la realidad de una forma en que los sentimientos se vuelven un agudo y complejo mecanismo de conocimiento. Al leer a Delfina Korn siento que sus relatos son instantáneas de la fragilidad, de la fragilidad entendida como el motor del que surgen las creaciones más perdurables.</p>
+<span class="firma">— Cecilia Pavón</span>
+    `
+  },
+  'luna-de-miel': {
+    title: 'Luna de miel',
+    editorial: 'Cuentos · Ediciones María Susana',
+    body: `<p>El texto iría acá.</p>`
+  }
+};
+
+const bookModal = document.getElementById('bookModal');
+const bookModalTitle = document.getElementById('modalTitle');
+const bookModalEd = document.getElementById('modalEditorial');
+const bookModalBody = document.getElementById('modalBody');
+
+function openBookModal(slug){
+  const b = BOOKS_DETAIL[slug];
+  if (!b) return;
+  bookModalTitle.textContent = b.title;
+  bookModalEd.textContent = b.editorial;
+  bookModalBody.innerHTML = b.body;
+  bookModalBody.scrollTop = 0;
+  bookModal.classList.add('open');
+  bookModal.setAttribute('aria-hidden','false');
+  document.body.style.overflow = 'hidden';
+  bookModal.querySelector('.modal-close').focus();
+}
+function closeBookModal(){
+  bookModal.classList.remove('open');
+  bookModal.setAttribute('aria-hidden','true');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.ver[data-book]').forEach(btn => {
+  btn.addEventListener('click', () => openBookModal(btn.dataset.book));
+});
+bookModal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('click', closeBookModal));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && bookModal.classList.contains('open')) closeBookModal();
+});
 </script>
 </body>
 </html>
