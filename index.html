@@ -183,6 +183,11 @@ header.scrolled{
    6. SOBRE LA AUTORA
    ========================================================= */
 .about-grid{ display:grid; grid-template-columns:.8fr 1.2fr; gap:clamp(34px,6vw,90px); align-items:center; }
+.about-copy-full{ max-width:72ch; }
+.about-more{ display:none; }
+.about-more.show{ display:block; animation:aboutReveal .45s var(--ease); }
+.about-toggle{ margin-top:1.5rem; }
+@keyframes aboutReveal{ from{ opacity:0; transform:translateY(8px); } to{ opacity:1; transform:none; } }
 .about-img{ position:relative; aspect-ratio:3/3.8; border-radius:var(--radio);
   overflow:hidden; border:1.5px solid var(--tinta); box-shadow:10px 10px 0 var(--lavanda);
   background:linear-gradient(150deg,var(--crema-2),var(--rosa)); }
@@ -660,11 +665,8 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
 
 <!-- ===================== SOBRE MÍ ===================== -->
 <section class="section" id="sobre">
-  <div class="wrap about-grid">
-    <div class="about-img reveal">
-      <img src="assets/delfina-korn.jpeg" alt="Retrato de Delfina Korn" />
-    </div>
-    <div class="about-copy">
+  <div class="wrap">
+    <div class="about-copy about-copy-full">
       <span class="eyebrow reveal">Sobre mí</span>
       <h2 class="about-h reveal d1">Delfina Korn</h2>
       <p class="about-p reveal d1">
@@ -677,25 +679,30 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         taller de escritura de Hebe Uhart, quien fue una gran maestra para mí.
         Paralelamente, a nivel formal, empecé a estudiar Periodismo.
       </p>
-      <p class="about-p reveal d2">
-        A partir de ese momento, mi vida discurrió por esos dos caminos: la
-        crónica periodística, por un lado, que es una de mis grandes pasiones,
-        y la escritura de ficción, por el otro. Llegaron otros maestros:
-        Alejandro López, Luis Gruss, Cecilia Pavón.
-      </p>
-      <p class="about-p reveal d3">
-        En el ámbito del periodismo, me especialicé en Internacionales, con un
-        título de posgrado en la Universidad Hebrea de Jerusalén y otro en la
-        Universidad Torcuato Di Tella. Publiqué algunos libros, bastantes
-        artículos.
-      </p>
-      <blockquote class="pull-quote reveal d3">
-        ¡Late en mí el deseo de escribir muchos más!
-      </blockquote>
-      <p class="about-p reveal d4">
-        Desde 2022, brindo talleres de escritura donde trato de encender y
-        acompañar esta llama en otros.
-      </p>
+      <div class="about-more" id="aboutMore">
+        <p class="about-p">
+          A partir de ese momento, mi vida discurrió por esos dos caminos: la
+          crónica periodística, por un lado, que es una de mis grandes pasiones,
+          y la escritura de ficción, por el otro. Llegaron otros maestros:
+          Alejandro López, Luis Gruss, Cecilia Pavón.
+        </p>
+        <p class="about-p">
+          En el ámbito del periodismo, me especialicé en Internacionales, con
+          un título de posgrado en la Universidad Hebrea de Jerusalén y otro
+          en la Universidad Torcuato Di Tella. Publiqué algunos libros,
+          bastantes artículos.
+        </p>
+        <blockquote class="pull-quote">
+          ¡Late en mí el deseo de escribir muchos más!
+        </blockquote>
+        <p class="about-p">
+          Desde 2022, brindo talleres de escritura donde trato de encender y
+          acompañar esta llama en otros.
+        </p>
+      </div>
+      <button type="button" class="btn btn--ghost btn--mini about-toggle reveal d2" id="aboutToggle">
+        Ver más <span class="arr">→</span>
+      </button>
     </div>
   </div>
 </section>
@@ -1261,6 +1268,18 @@ bookModal.querySelectorAll('[data-close]').forEach(el => el.addEventListener('cl
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && bookModal.classList.contains('open')) closeBookModal();
 });
+
+/* ========== Toggle Ver más / Ver menos de Sobre mí ========== */
+const aboutToggle = document.getElementById('aboutToggle');
+const aboutMore = document.getElementById('aboutMore');
+if (aboutToggle && aboutMore){
+  aboutToggle.addEventListener('click', () => {
+    const open = aboutMore.classList.toggle('show');
+    aboutToggle.innerHTML = open
+      ? 'Ver menos <span class="arr">↑</span>'
+      : 'Ver más <span class="arr">→</span>';
+  });
+}
 
 /* ========== Scroll horizontal de Prensa ========== */
 const prensaStrip = document.getElementById('prensaStrip');
