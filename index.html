@@ -165,6 +165,7 @@ header.scrolled{
   border:1px solid rgba(30,30,30,.15); background:var(--crema-2);
 }
 .hero-cover img{ width:100%; height:100%; object-fit:cover; }
+.hero-cover-photo img{ object-position:30% center; }
 .hero-card{
   position:absolute; bottom:-1%; right:-5%; width:60%;
   background:var(--crema); border:1.5px solid var(--tinta); border-radius:var(--radio);
@@ -314,21 +315,42 @@ header.scrolled{
 .post:hover .leer .arr{ transform:translateX(5px); }
 
 /* =========================================================
-   11. CITAS
+   11. ARTÍCULOS PERIODÍSTICOS — lista
    ========================================================= */
-.citas{ background:var(--crema-2); }
-.citas-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(18px,2.2vw,28px); }
-.cita{ position:relative; background:var(--crema); border:1.5px solid var(--tinta);
-  border-radius:var(--radio); padding:clamp(28px,3vw,44px);
-  transition:transform .45s var(--ease), box-shadow .45s var(--ease); }
-.cita:nth-child(2){ background:var(--lavanda); color:#fff; transform:translateY(20px); }
-.cita:hover{ transform:translateY(-6px); box-shadow:8px 8px 0 var(--lavanda); }
-.cita:nth-child(2):hover{ transform:translateY(14px); box-shadow:8px 8px 0 var(--tinta); }
-.cita .mark{ font-size:3.2rem; line-height:.5; color:var(--lavanda); display:block; margin-bottom:1rem; font-weight:700; }
-.cita:nth-child(2) .mark{ color:rgba(255,255,255,.6); }
-.cita .txt{ font-style:italic; font-size:1.2rem; line-height:1.45; }
-.cita .from{ margin-top:1.5rem; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--gris); }
-.cita:nth-child(2) .from{ color:rgba(255,255,255,.85); }
+.articulos{ list-style:none; padding:0; margin:0; }
+.articulo{
+  display:grid; grid-template-columns:auto 1fr auto;
+  gap:clamp(18px,3vw,38px); align-items:center;
+  padding:clamp(22px,2.6vw,30px) 0;
+  border-top:1px solid var(--linea);
+  transition:padding-left .35s var(--ease), background .35s var(--ease);
+}
+.articulo:last-child{ border-bottom:1px solid var(--linea); }
+.articulo:hover{ padding-left:.7rem; }
+.articulo .num{ font-size:.78rem; font-weight:700; color:var(--gris); letter-spacing:.16em; min-width:32px; }
+.articulo .content{ min-width:0; }
+.articulo h3{
+  font-size:clamp(1.05rem,1.9vw,1.4rem); line-height:1.25;
+  margin-bottom:.4rem; font-weight:700;
+  letter-spacing:-.01em;
+}
+.articulo h3 a{ color:var(--lavanda-d); transition:color .3s var(--ease); }
+.articulo h3 a:hover{
+  color:var(--tinta);
+  text-decoration:underline;
+  text-decoration-color:var(--lavanda);
+  text-decoration-thickness:2px;
+  text-underline-offset:5px;
+}
+.articulo .medio{
+  font-size:.76rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--gris); font-weight:700;
+}
+.articulo .btn{ white-space:nowrap; }
+@media (max-width:760px){
+  .articulo{ grid-template-columns:auto 1fr; }
+  .articulo .btn{ grid-column:1 / -1; justify-self:start; margin-top:.6rem; }
+}
 
 /* =========================================================
    12. PRENSA — scroll horizontal
@@ -518,12 +540,12 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
     <a href="#inicio" class="brand">DELFINA KORN <span class="dot"></span></a>
     <nav class="menu" id="menu">
       <a href="#inicio" class="active">Inicio</a>
-      <a href="#sobre">Sobre la autora</a>
-      <a href="#obras">Obras</a>
+      <a href="#sobre">Sobre mí</a>
+      <a href="#obras">Libros</a>
       <a href="#talleres">Talleres</a>
       <a href="#textos">Cuentos</a>
-      <a href="#prensa">Prensa</a>
-      <a href="#contacto">Contacto</a>
+      <a href="#periodismo">Periodismo</a>
+      <a href="#prensa">En la prensa</a>
     </nav>
     <div class="nav-cta">
       <a href="#contacto" class="btn btn--solid btn--mini">Escribir <span class="arr">→</span></a>
@@ -544,35 +566,107 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <p class="hero-lead reveal d2">Trabajadora palabrera</p>
         <p class="hero-text reveal d3">Diva de las letras</p>
         <div class="hero-actions reveal d4">
-          <a href="#obras" class="btn btn--solid">Ver obras <span class="arr">→</span></a>
-          <a href="#sobre" class="btn btn--ghost">Conocer más</a>
+          <a href="#obras" class="btn btn--solid">Ver libros <span class="arr">→</span></a>
+          <a href="#sobre" class="btn btn--ghost">Sobre mí</a>
         </div>
       </div>
 
       <div class="hero-visual reveal d2">
         <div class="blob-1"></div>
         <div class="blob-2"></div>
-        <!-- Tapa destacada en el hero -->
-        <div class="hero-cover"><img src="assets/el-yanqui.jpeg" alt="Tapa de El yanqui, de Delfina Korn" /></div>
-        <span class="float-tag">Último libro</span>
-        <div class="hero-card">
-          <p class="q">El texto iría acá.</p>
+        <div class="hero-cover hero-cover-photo">
+          <img src="assets/delfina-korn.jpeg" alt="Retrato de Delfina Korn" />
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== SOBRE LA AUTORA ===================== -->
-<!-- EDITAR: reemplazar texto biográfico por la bio real de Delfina. -->
+<!-- ===================== OBRAS ===================== -->
+<!-- EDITAR: confirmar año, género y descripción real de cada libro. -->
+<section class="section" id="obras">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title reveal">Libros</h2>
+    </div>
+
+    <div class="filtros reveal">
+      <button class="filtro active" data-f="todos">Todos</button>
+      <button class="filtro" data-f="novela">Novelas</button>
+      <button class="filtro" data-f="cuento">Cuentos</button>
+    </div>
+
+    <div class="obras-grid" id="obrasGrid">
+      <article class="libro reveal" data-cat="novela">
+        <div class="portada"><img src="assets/el-yanqui.jpeg" alt="Tapa de El yanqui" /></div>
+        <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
+        <h3>El yanqui</h3>
+        <p class="ed">Mansalva</p>
+        <p>Una chica de diecisiete años, un amor imposible y los perfumes secretos que guardará en el freezer para descongelar cada vez que necesite recordarlo.</p>
+        <button type="button" class="ver" data-book="el-yanqui">Ver más <span class="arr">→</span></button>
+      </article>
+
+      <article class="libro reveal d1" data-cat="cuento">
+        <div class="portada"><img src="assets/prefiero-morir-de-amor.jpeg" alt="Tapa de Prefiero morir de amor" /></div>
+        <div class="top"><span class="tag">Cuentos</span><span class="anio">año</span></div>
+        <h3>Prefiero morir de amor</h3>
+        <p class="ed">Bombal</p>
+        <p>Cuentos atravesados de viajes, enredos amorosos y malentendidos: comedia y drama, todo al mismo tiempo y superpuesto.</p>
+        <button type="button" class="ver" data-book="prefiero-morir-de-amor">Ver más <span class="arr">→</span></button>
+      </article>
+
+      <article class="libro reveal d2" data-cat="cuento">
+        <div class="portada"><img src="assets/aguas-compartidas.jpeg" alt="Tapa de Aguas compartidas" /></div>
+        <div class="top"><span class="tag">Cuentos</span><span class="anio">año</span></div>
+        <h3>Aguas compartidas</h3>
+        <p class="ed">Griselda García Editora</p>
+        <p>Relatos que no se atienen a nada: desbordan. Voces femeninas, latinas y africanas, que se plantan en el mundo.</p>
+        <button type="button" class="ver" data-book="aguas-compartidas">Ver más <span class="arr">→</span></button>
+      </article>
+
+      <article class="libro reveal d3" data-cat="cuento">
+        <div class="portada"><img src="assets/luna-de-miel.jpeg" alt="Tapa de Luna de miel" /></div>
+        <div class="top"><span class="tag">Cuentos</span><span class="anio">año</span></div>
+        <h3>Luna de miel</h3>
+        <p class="ed">Ediciones María Susana</p>
+        <button type="button" class="ver" data-book="luna-de-miel">Ver más <span class="arr">→</span></button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OBRA DESTACADA ===================== -->
+<section class="section" id="destacada">
+  <div class="wrap">
+    <div class="destacada reveal">
+      <div class="dest-grid">
+        <div>
+          <span class="dest-eyebrow">Obra destacada</span>
+          <h2>El yanqui</h2>
+          <p class="desc">
+            <em>El Yanqui</em> fue una de las diez obras finalistas de la
+            segunda edición del concurso Premio Nacional de Novela
+            <em>Sara Gallardo</em>.
+          </p>
+          <a href="#" class="btn btn--solid">Leer más <span class="arr">→</span></a>
+        </div>
+        <div class="dest-cover">
+          <img src="assets/el-yanqui.jpeg" alt="Tapa de El yanqui, de Delfina Korn — Mansalva" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SOBRE MÍ ===================== -->
 <section class="section" id="sobre">
   <div class="wrap about-grid">
     <div class="about-img reveal">
       <img src="assets/delfina-korn.jpeg" alt="Retrato de Delfina Korn" />
     </div>
     <div class="about-copy">
-      <span class="eyebrow reveal">Sobre la autora</span>
-      <h2 class="about-h reveal d1">El título iría acá</h2>
+      <span class="eyebrow reveal">Sobre mí</span>
+      <h2 class="about-h reveal d1">Delfina Korn</h2>
       <p class="about-p reveal d1">
         Desde niña, disfruté de escribir historias. Empecé mi observación y
         creación literaria ayudando a mi madre, que es actriz, a inventar las
@@ -606,90 +700,11 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   </div>
 </section>
 
-<!-- ===================== OBRAS ===================== -->
-<!-- EDITAR: confirmar año, género y descripción real de cada libro. -->
-<section class="section" id="obras">
-  <div class="wrap">
-    <div class="sec-head">
-      <h2 class="sec-title reveal">Obras</h2>
-      <p class="sec-sub reveal d1">El texto iría acá.</p>
-    </div>
-
-    <div class="filtros reveal">
-      <button class="filtro active" data-f="todos">Todos</button>
-      <button class="filtro" data-f="novela">Novelas</button>
-      <button class="filtro" data-f="cuento">Cuentos</button>
-    </div>
-
-    <div class="obras-grid" id="obrasGrid">
-      <article class="libro reveal" data-cat="novela">
-        <div class="portada"><img src="assets/el-yanqui.jpeg" alt="Tapa de El yanqui" /></div>
-        <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
-        <h3>El yanqui</h3>
-        <p class="ed">Mansalva</p>
-        <p>Una chica de diecisiete años, un amor imposible y los perfumes secretos que guardará en el freezer para descongelar cada vez que necesite recordarlo.</p>
-        <button type="button" class="ver" data-book="el-yanqui">Ver más <span class="arr">→</span></button>
-      </article>
-
-      <article class="libro reveal d1" data-cat="novela">
-        <div class="portada"><img src="assets/prefiero-morir-de-amor.jpeg" alt="Tapa de Prefiero morir de amor" /></div>
-        <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
-        <h3>Prefiero morir de amor</h3>
-        <p class="ed">Bombal</p>
-        <p>Cuentos atravesados de viajes, enredos amorosos y malentendidos: comedia y drama, todo al mismo tiempo y superpuesto.</p>
-        <button type="button" class="ver" data-book="prefiero-morir-de-amor">Ver más <span class="arr">→</span></button>
-      </article>
-
-      <article class="libro reveal d2" data-cat="novela">
-        <div class="portada"><img src="assets/aguas-compartidas.jpeg" alt="Tapa de Aguas compartidas" /></div>
-        <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
-        <h3>Aguas compartidas</h3>
-        <p class="ed">Griselda García Editora</p>
-        <p>Relatos que no se atienen a nada: desbordan. Voces femeninas, latinas y africanas, que se plantan en el mundo.</p>
-        <button type="button" class="ver" data-book="aguas-compartidas">Ver más <span class="arr">→</span></button>
-      </article>
-
-      <article class="libro reveal d3" data-cat="cuento">
-        <div class="portada"><img src="assets/luna-de-miel.jpeg" alt="Tapa de Luna de miel" /></div>
-        <div class="top"><span class="tag">Cuentos</span><span class="anio">año</span></div>
-        <h3>Luna de miel</h3>
-        <p class="ed">Ediciones María Susana</p>
-        <p>El texto iría acá.</p>
-        <button type="button" class="ver" data-book="luna-de-miel">Ver más <span class="arr">→</span></button>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== OBRA DESTACADA ===================== -->
-<section class="section" id="destacada">
-  <div class="wrap">
-    <div class="destacada reveal">
-      <div class="dest-grid">
-        <div>
-          <span class="dest-eyebrow">Obra destacada</span>
-          <h2>El yanqui</h2>
-          <p class="desc">
-            <em>El Yanqui</em> fue una de las diez obras finalistas de la
-            segunda edición del concurso Premio Nacional de Novela
-            <em>Sara Gallardo</em>.
-          </p>
-          <a href="#" class="btn btn--solid">Leer más <span class="arr">→</span></a>
-        </div>
-        <div class="dest-cover">
-          <img src="assets/el-yanqui.jpeg" alt="Tapa de El yanqui, de Delfina Korn — Mansalva" />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== TALLERES / SERVICIOS ===================== -->
 <section class="section" id="talleres">
   <div class="wrap">
     <div class="sec-head">
       <h2 class="sec-title reveal">Talleres<br>& clínica</h2>
-      <p class="sec-sub reveal d1">El texto iría acá.</p>
     </div>
 
     <div class="talleres-grid">
@@ -698,7 +713,6 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="body">
           <span class="num">01 · Taller de escritura</span>
           <h3>Cómo encontrar la mirada propia</h3>
-          <p>El texto iría acá.</p>
           <a href="#contacto" class="lnk">Quiero participar <span class="arr">→</span></a>
         </div>
       </article>
@@ -708,7 +722,6 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="body">
           <span class="num">02 · Acompañamiento</span>
           <h3>Clínica de obra</h3>
-          <p>El texto iría acá.</p>
           <a href="#contacto" class="lnk">Pedir info <span class="arr">→</span></a>
         </div>
       </article>
@@ -725,42 +738,36 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
     </div>
     <div class="posts">
       <article class="post reveal">
-        <span class="num">01 / 06</span>
         <span class="ext" aria-hidden="true">↗</span>
         <div class="meta"><span class="cat">La Primera Piedra</span><span>Cuento · May 2022</span></div>
         <h3>Las intrusas</h3>
         <a href="https://www.laprimerapiedra.com.ar/2022/05/las-intursas-cuento-de-delfina-korn/" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
       </article>
       <article class="post reveal d1">
-        <span class="num">02 / 06</span>
         <span class="ext" aria-hidden="true">↗</span>
         <div class="meta"><span class="cat">Faxsit</span><span>Cuento · Ago 2020</span></div>
         <h3>Fool</h3>
         <a href="https://faxsit.wordpress.com/2020/08/27/fool/" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
       </article>
       <article class="post reveal d2">
-        <span class="num">03 / 06</span>
         <span class="ext" aria-hidden="true">↗</span>
         <div class="meta"><span class="cat">Clarín · Mundos íntimos</span><span>Crónica</span></div>
         <h3>Quisimos ser diferentes y logramos seguir juntos</h3>
         <a href="https://www.clarin.com/sociedad/mundos-intimos-amor-quisimos-diferentes-logramos-seguir-juntos_0_r1ugLN4Vb.html" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
       </article>
       <article class="post reveal">
-        <span class="num">04 / 06</span>
         <span class="ext" aria-hidden="true">↗</span>
         <div class="meta"><span class="cat">La Agenda</span><span>Cuento</span></div>
         <h3>Amor abstracto</h3>
         <a href="https://laagenda.buenosaires.gob.ar/contenido/19409-amor-abstracto" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
       </article>
       <article class="post reveal d1">
-        <span class="num">05 / 06</span>
         <span class="ext" aria-hidden="true">↗</span>
         <div class="meta"><span class="cat">Urgente24</span><span>Cuento</span></div>
         <h3>La enferma de amor</h3>
         <a href="https://urgente24.com/ocio/lectura/la-enferma-de-amor-un-cuento-para-reirse-y-llorar-al-mismo-tiempo" class="leer" target="_blank" rel="noopener">Leer <span class="arr">→</span></a>
       </article>
       <article class="post reveal d2">
-        <span class="num">06 / 06</span>
         <span class="ext" aria-hidden="true">↗</span>
         <div class="meta"><span class="cat">Eterna Cadencia</span><span>Cuento</span></div>
         <h3>La dueña de la pava</h3>
@@ -771,13 +778,142 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
 </section>
 
 
-<!-- ===================== PRENSA / RECONOCIMIENTOS ===================== -->
-<!-- EDITAR: reemplazar por prensa real (entrevistas, reseñas, premios). -->
+<!-- ===================== ARTÍCULOS PERIODÍSTICOS ===================== -->
+<section class="section" id="periodismo">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 class="sec-title reveal">Artículos periodísticos</h2>
+    </div>
+    <ol class="articulos">
+      <li class="articulo reveal">
+        <span class="num">01</span>
+        <div class="content">
+          <h3><a href="https://www.lanacion.com.ar/espectaculos/television/bailando-2023-lo-que-no-se-vio-de-la-final-desde-los-rumores-de-despedida-hasta-los-entretelones-del-nid30012024/" target="_blank" rel="noopener">Bailando 2023: lo que no se vio de la final</a></h3>
+          <p class="medio">La Nación · Espectáculos</p>
+        </div>
+        <a href="https://www.lanacion.com.ar/espectaculos/television/bailando-2023-lo-que-no-se-vio-de-la-final-desde-los-rumores-de-despedida-hasta-los-entretelones-del-nid30012024/" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">02</span>
+        <div class="content">
+          <h3><a href="https://www.lanacion.com.ar/espectaculos/personajes/adriana-aguirre-el-icono-sexual-de-los-80-que-huyo-de-una-jaula-de-oro-y-ahora-esta-pensando-en-nid21032024/" target="_blank" rel="noopener">Adriana Aguirre, el ícono sexual de los 80 que huyó de una jaula de oro</a></h3>
+          <p class="medio">La Nación · Personajes</p>
+        </div>
+        <a href="https://www.lanacion.com.ar/espectaculos/personajes/adriana-aguirre-el-icono-sexual-de-los-80-que-huyo-de-una-jaula-de-oro-y-ahora-esta-pensando-en-nid21032024/" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">03</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/262152-botched-la-redencion-de-los-casos-perdidos" target="_blank" rel="noopener">Botched: la redención de los casos perdidos</a></h3>
+          <p class="medio">Urgente24</p>
+        </div>
+        <a href="https://urgente24.com/262152-botched-la-redencion-de-los-casos-perdidos" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">04</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/ocio/sobre-la-pelicula-passing-las-delicias-la-deslealtad-n537069" target="_blank" rel="noopener">Sobre la película Passing: las delicias, la deslealtad</a></h3>
+          <p class="medio">Urgente24 · Ocio</p>
+        </div>
+        <a href="https://urgente24.com/ocio/sobre-la-pelicula-passing-las-delicias-la-deslealtad-n537069" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">05</span>
+        <div class="content">
+          <h3><a href="https://hacerselacritica.com/tengo-un-amigo-negro-sobre-la-nueva-sex-and-the-city-por-delfina-korn/" target="_blank" rel="noopener">Tengo un amigo negro: sobre la nueva Sex and the City</a></h3>
+          <p class="medio">Hacerse la Crítica</p>
+        </div>
+        <a href="https://hacerselacritica.com/tengo-un-amigo-negro-sobre-la-nueva-sex-and-the-city-por-delfina-korn/" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">06</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/foco/yo-sabia-que-me-podia-morir-asi-que-grabe-un-video-n524316" target="_blank" rel="noopener">Yo sabía que me podía morir, así que grabé un video</a></h3>
+          <p class="medio">Urgente24 · Foco</p>
+        </div>
+        <a href="https://urgente24.com/foco/yo-sabia-que-me-podia-morir-asi-que-grabe-un-video-n524316" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">07</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/mundo/podria-el-ejercito-ucrania-pasar-luchar-uniforme-n534569" target="_blank" rel="noopener">¿Podría el ejército de Ucrania pasar a luchar de uniforme?</a></h3>
+          <p class="medio">Urgente24 · Mundo</p>
+        </div>
+        <a href="https://urgente24.com/mundo/podria-el-ejercito-ucrania-pasar-luchar-uniforme-n534569" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">08</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/analisis/opinion/after-life-si-hay-vida-despues-de-la-muerte-de-un-conyuge" target="_blank" rel="noopener">After Life: sí hay vida después de la muerte de un cónyuge</a></h3>
+          <p class="medio">Urgente24 · Opinión</p>
+        </div>
+        <a href="https://urgente24.com/analisis/opinion/after-life-si-hay-vida-despues-de-la-muerte-de-un-conyuge" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">09</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/analisis/opinion/dios-se-mueve-de-una-manera-misteriosa-para-realizar-sus-maravillas" target="_blank" rel="noopener">Dios se mueve de una manera misteriosa para realizar sus maravillas</a></h3>
+          <p class="medio">Urgente24 · Opinión</p>
+        </div>
+        <a href="https://urgente24.com/analisis/opinion/dios-se-mueve-de-una-manera-misteriosa-para-realizar-sus-maravillas" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">10</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/ocio/cartelera/un-tipo-algo-melancolico-que-escalo-una-pared-de-1000-metros-sin-soga" target="_blank" rel="noopener">Un tipo algo melancólico que escaló una pared de 1000 metros sin soga</a></h3>
+          <p class="medio">Urgente24 · Cartelera</p>
+        </div>
+        <a href="https://urgente24.com/ocio/cartelera/un-tipo-algo-melancolico-que-escalo-una-pared-de-1000-metros-sin-soga" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">11</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/275817-en-las-horas-en-que-el-infierno-no-existio-crecieron-1200-los-casos-de-zoofilia" target="_blank" rel="noopener">En las horas en que el infierno no existió crecieron 1200% los casos de zoofilia</a></h3>
+          <p class="medio">Urgente24</p>
+        </div>
+        <a href="https://urgente24.com/275817-en-las-horas-en-que-el-infierno-no-existio-crecieron-1200-los-casos-de-zoofilia" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">12</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/276058-ellas-no-les-envidian-el-pene-sino-la-facilidad-para-defecar-en-banos-ajenos" target="_blank" rel="noopener">Ellas no les envidian el pene, sino la facilidad para defecar en baños ajenos</a></h3>
+          <p class="medio">Urgente24</p>
+        </div>
+        <a href="https://urgente24.com/276058-ellas-no-les-envidian-el-pene-sino-la-facilidad-para-defecar-en-banos-ajenos" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">13</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/275131-exclusivo-el-plan-del-gobierno-para-impulsar-la-masturbacion-y-reducir-los-abortos" target="_blank" rel="noopener">Exclusivo: el plan del gobierno para impulsar la masturbación y reducir los abortos</a></h3>
+          <p class="medio">Urgente24</p>
+        </div>
+        <a href="https://urgente24.com/275131-exclusivo-el-plan-del-gobierno-para-impulsar-la-masturbacion-y-reducir-los-abortos" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">14</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/275398-despues-de-las-medias-de-colores-macri-se-vistio-de-mar-por-el-dia-del-agua" target="_blank" rel="noopener">Después de las medias de colores, Macri se vistió de mar por el Día del Agua</a></h3>
+          <p class="medio">Urgente24</p>
+        </div>
+        <a href="https://urgente24.com/275398-despues-de-las-medias-de-colores-macri-se-vistio-de-mar-por-el-dia-del-agua" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+      <li class="articulo reveal">
+        <span class="num">15</span>
+        <div class="content">
+          <h3><a href="https://urgente24.com/277616-a-brillar-mi-amor-el-plan-de-macri-para-beber-fluor-y-generar-tu-propia-iluminacion" target="_blank" rel="noopener">A brillar mi amor: el plan de Macri para beber flúor y generar tu propia iluminación</a></h3>
+          <p class="medio">Urgente24</p>
+        </div>
+        <a href="https://urgente24.com/277616-a-brillar-mi-amor-el-plan-de-macri-para-beber-fluor-y-generar-tu-propia-iluminacion" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ===================== EN LA PRENSA ===================== -->
 <section class="section" id="prensa">
   <div class="wrap">
     <div class="sec-head">
-      <h2 class="sec-title reveal">Prensa &<br>reconocimientos</h2>
-      <p class="sec-sub reveal d1">El texto iría acá.</p>
+      <h2 class="sec-title reveal">En la prensa</h2>
     </div>
     <div class="prensa-scroll reveal">
       <button type="button" class="prensa-nav prev" id="prensaPrev" aria-label="Anterior">←</button>
@@ -892,8 +1028,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
   <div class="wrap cont-grid">
     <div>
       <span class="eyebrow reveal">Contacto</span>
-      <h2 class="cont-h reveal d1">El título <span>iría acá</span></h2>
-      <p class="cont-p reveal d1">El texto iría acá.</p>
+      <h2 class="cont-h reveal d1">Escribime</h2>
       <a href="mailto:kornescritora@gmail.com" class="cont-line reveal d2">
         <b>mail:</b> kornescritora@gmail.com
       </a>
@@ -959,14 +1094,15 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="foot-col">
           <h4>Navegar</h4>
           <a href="#inicio">Inicio</a>
-          <a href="#sobre">Sobre la autora</a>
-          <a href="#obras">Obras</a>
+          <a href="#sobre">Sobre mí</a>
+          <a href="#obras">Libros</a>
           <a href="#talleres">Talleres</a>
         </div>
         <div class="foot-col">
           <h4>Más</h4>
           <a href="#textos">Cuentos</a>
-          <a href="#prensa">Prensa</a>
+          <a href="#periodismo">Periodismo</a>
+          <a href="#prensa">En la prensa</a>
           <a href="#contacto">Contacto</a>
         </div>
         <div class="foot-col">
@@ -1058,7 +1194,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const BOOKS_DETAIL = {
   'aguas-compartidas': {
     title: 'Aguas compartidas',
-    editorial: 'Novela · Griselda García Editora',
+    editorial: 'Cuentos · Griselda García Editora',
     body: `
 <p>Los relatos de Delfina Korn no se atienen a nada: desbordan. Sus personajes, de diferentes nacionalidades y creencias religiosas, parecen movidos por la sangre. Una porteña mantiene un amor a distancia con un paraguayo hasta que se entera que espera un hijo de otra. Otra siente que con su sola presencia en el hospital va a curar a su abuela. Una estudiante de danza nos cuenta cómo hace para abandonar las clases de su posesiva profesora senegalesa.</p>
 <p>La idea de lo distinto atraviesa al lector durante todo el libro, como cuando la narradora de “La pileta equivocada” entra a la casa de su amiga peruana: “Había para mí algo reconfortante en ese mundo, en participar de esas fiestas. Yo era casi la única argentina que estaba invitada. Era como estar en otro país. En esa sociedad, a diferencia de la mía, las cosas estaban claras. Contra una pared iban las mujeres; contra la otra, los hombres. Ellos bebían, ellas sonreían. Todo el mundo reía y todo el mundo sabía qué lugar ocupaba”.</p>
@@ -1077,7 +1213,7 @@ const BOOKS_DETAIL = {
   },
   'prefiero-morir-de-amor': {
     title: 'Prefiero morir de amor',
-    editorial: 'Bombal',
+    editorial: 'Cuentos · Bombal',
     body: `
 <p>“Yo lo que hago cuando estoy así, embrujada, es hablar con todo el mundo” dice la narradora de unos de estos cuentos. Y cuando dice “todo el mundo”, está siendo totalmente literal. Un cobayo temeroso de cruzarse con su ex, un karateka disfrazado de ninja, fiestas de Purim, conductores radiales tan enamorados como al borde del suicidio, viajes a África, un médico llamado Yefri Connel pero más conocido como Doctor Papito: todo esto y mucho más encuentra una manera de habitar con naturalidad y soltura los mundos que Delfina Korn arma para nosotros.</p>
 <p>Atravesados de viajes, de enredos amorosos, de malentendidos y de problemas para comunicarse, estos cuentos son chapuzones veloces en medio del torbellino, son aceleración y fuga hacia adelante, son imaginación desbocada, desparpajo y humor zumbón, son depresión y corazones destrozados, todo al mismo tiempo y superpuesto: comedia y drama. Y entre tanto, en las pequeñas pausas que los personajes hacen para permitirse respirar, una mirada lúcida e implacable, capaz de definir un estado de ánimo, una verdad innegable o una observación sabia mediante el único golpe seco de un latigazo. Solo para después, enseguida y a todo galope, seguir preguntándose: ¿dónde estará el futuro?, ¿qué será?, ¿cómo será detenerse?, ¿cómo será frenar?.</p>
@@ -1089,7 +1225,7 @@ const BOOKS_DETAIL = {
   'luna-de-miel': {
     title: 'Luna de miel',
     editorial: 'Cuentos · Ediciones María Susana',
-    body: `<p>El texto iría acá.</p>`
+    body: ``
   }
 };
 
