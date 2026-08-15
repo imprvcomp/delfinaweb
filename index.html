@@ -431,17 +431,6 @@ main > section + section::before{
 #obras > .wrap, #sobre > .wrap, #textos > .wrap, #prensa > .wrap{
   position:relative; z-index:1;
 }
-/* Círculo violeta contenido, en la esquina inferior derecha */
-#obras::after, #sobre::after, #textos::after, #prensa::after{
-  content:"";
-  position:absolute; pointer-events:none;
-  bottom:clamp(24px,3vw,50px); right:clamp(24px,3vw,50px);
-  width:clamp(140px,18vw,220px); aspect-ratio:1;
-  border:2px solid var(--lavanda);
-  border-radius:50%;
-  opacity:.32;
-  z-index:0;
-}
 @media (max-width:760px){
   .articulo{ grid-template-columns:auto 1fr; }
   .articulo .btn{ grid-column:1 / -1; justify-self:start; margin-top:.6rem; }
