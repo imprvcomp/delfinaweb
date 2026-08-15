@@ -434,13 +434,13 @@ main > section + section::before{
   position:relative; z-index:1;
 }
 #obras::after, #sobre::after, #textos::after, #prensa::after{
-  content:"❋";
+  content:"";
   position:absolute; pointer-events:none;
-  bottom:clamp(24px,3vw,44px); right:clamp(24px,4vw,60px);
-  font-size:clamp(2.2rem,4vw,3.4rem);
-  color:var(--lavanda);
-  opacity:.28;
-  line-height:1;
+  bottom:-120px; right:-120px;
+  width:280px; height:280px;
+  border:2px solid var(--lavanda);
+  border-radius:50%;
+  opacity:.35;
   z-index:0;
 }
 @media (max-width:760px){
