@@ -403,31 +403,62 @@ header.scrolled{
 }
 .articulo .btn{ white-space:nowrap; justify-self:end; width:fit-content; }
 
-/* Fondos alternados de secciones (blanco / crema) con detalles en violeta */
+/* ---- Diseño de fondos: separación violeta entre bloques + diseño editorial en blanco ---- */
+
+/* Borde punteado violeta entre cada bloque */
+main > .section{ position:relative; }
+main > .section + .section{
+  border-top:2px dashed var(--lavanda);
+}
+/* Rombo violeta centrado sobre la línea (marca de puntuación editorial) */
+main > .section + .section::before{
+  content:""; position:absolute; pointer-events:none;
+  top:-8px; left:50%;
+  width:14px; height:14px;
+  background:var(--lavanda);
+  transform:translateX(-50%) rotate(45deg);
+  z-index:3;
+}
+
+/* Secciones blancas: grilla suave lavanda + esquinas con brackets */
 #obras, #sobre, #textos, #prensa{
   background:#ffffff;
-  background-image:radial-gradient(circle, rgba(155,165,253,.16) 1px, transparent 1px);
-  background-size:26px 26px;
-  position:relative; overflow:hidden;
+  background-image:
+    linear-gradient(rgba(155,165,253,.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(155,165,253,.09) 1px, transparent 1px);
+  background-size:44px 44px;
+  overflow:hidden;
 }
-#obras::before, #sobre::before, #textos::before, #prensa::before{
-  content:""; position:absolute; pointer-events:none;
-  top:-220px; right:-220px;
-  width:520px; height:520px;
-  background:radial-gradient(circle, var(--lavanda) 0%, transparent 62%);
-  opacity:.22; border-radius:50%;
-  z-index:0;
-}
-#obras::after, #sobre::after, #textos::after, #prensa::after{
-  content:""; position:absolute; pointer-events:none;
-  bottom:-180px; left:-180px;
-  width:420px; height:420px;
-  background:radial-gradient(circle, var(--celeste) 0%, transparent 62%);
-  opacity:.16; border-radius:50%;
-  z-index:0;
-}
+/* Corner brackets [ ┐ ┘ superior-derecha e inferior-izquierda ] */
 #obras > .wrap, #sobre > .wrap, #textos > .wrap, #prensa > .wrap{
   position:relative; z-index:1;
+}
+#obras > .wrap::before, #sobre > .wrap::before,
+#textos > .wrap::before, #prensa > .wrap::before{
+  content:""; position:absolute; pointer-events:none;
+  top:-12px; right:0;
+  width:52px; height:52px;
+  border-top:3px solid var(--lavanda);
+  border-right:3px solid var(--lavanda);
+}
+#obras > .wrap::after, #sobre > .wrap::after,
+#textos > .wrap::after, #prensa > .wrap::after{
+  content:""; position:absolute; pointer-events:none;
+  bottom:-12px; left:0;
+  width:52px; height:52px;
+  border-bottom:3px solid var(--lavanda);
+  border-left:3px solid var(--lavanda);
+}
+
+/* Glow suave violeta al fondo (elegante, no invasivo) */
+#obras, #sobre, #textos, #prensa{ position:relative; }
+#obras::after, #sobre::after, #textos::after, #prensa::after{
+  content:""; position:absolute; pointer-events:none;
+  top:-160px; right:-160px;
+  width:420px; height:420px;
+  background:radial-gradient(circle, var(--lavanda) 0%, transparent 62%);
+  opacity:.14; border-radius:50%;
+  z-index:0;
 }
 @media (max-width:760px){
   .articulo{ grid-template-columns:auto 1fr; }
