@@ -206,13 +206,13 @@ header.scrolled{
 .prensa-scroll:not(.expanded) .prensa-strip .prensa-item:nth-child(n+4){ display:none; }
 .prensa-scroll:not(.expanded) .prensa-nav{ display:none; }
 
-/* Botón "Ver más" centrado, estilo tecla */
+/* Botón "Ver más" centrado, estilo tecla — mismo en todas las secciones */
 .section-vermas{
-  display:block; margin:2rem auto 0;
+  display:block; width:fit-content; margin:2rem auto 0;
   background:transparent; border:1.5px solid var(--tinta);
   padding:.65rem 1.5rem; border-radius:var(--radio);
   font-family:var(--mono); font-size:.88rem; font-weight:700;
-  color:var(--tinta); cursor:pointer;
+  color:var(--tinta); cursor:pointer; white-space:nowrap;
   transition:background .3s var(--ease), color .3s var(--ease), transform .3s var(--ease), box-shadow .3s var(--ease);
 }
 .section-vermas:hover{
@@ -873,128 +873,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         </div>
         <a href="https://victorica.medium.com/la-otra-realidad-de-este-domingo-juan-laxagueborde-fd00ac8a391" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
       </li>
-      <li class="articulo reveal">
-        <span class="num">04</span>
-        <div class="content">
-          <h3><a href="https://www.lanacion.com.ar/espectaculos/television/bailando-2023-lo-que-no-se-vio-de-la-final-desde-los-rumores-de-despedida-hasta-los-entretelones-del-nid30012024/" target="_blank" rel="noopener">Bailando 2023: lo que no se vio de la final</a></h3>
-          <p class="medio">La Nación · Espectáculos</p>
-        </div>
-        <a href="https://www.lanacion.com.ar/espectaculos/television/bailando-2023-lo-que-no-se-vio-de-la-final-desde-los-rumores-de-despedida-hasta-los-entretelones-del-nid30012024/" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">02</span>
-        <div class="content">
-          <h3><a href="https://www.lanacion.com.ar/espectaculos/personajes/adriana-aguirre-el-icono-sexual-de-los-80-que-huyo-de-una-jaula-de-oro-y-ahora-esta-pensando-en-nid21032024/" target="_blank" rel="noopener">Adriana Aguirre, el ícono sexual de los 80 que huyó de una jaula de oro</a></h3>
-          <p class="medio">La Nación · Personajes</p>
-        </div>
-        <a href="https://www.lanacion.com.ar/espectaculos/personajes/adriana-aguirre-el-icono-sexual-de-los-80-que-huyo-de-una-jaula-de-oro-y-ahora-esta-pensando-en-nid21032024/" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">03</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/262152-botched-la-redencion-de-los-casos-perdidos" target="_blank" rel="noopener">Botched: la redención de los casos perdidos</a></h3>
-          <p class="medio">Urgente24</p>
-        </div>
-        <a href="https://urgente24.com/262152-botched-la-redencion-de-los-casos-perdidos" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">04</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/ocio/sobre-la-pelicula-passing-las-delicias-la-deslealtad-n537069" target="_blank" rel="noopener">Sobre la película Passing: las delicias, la deslealtad</a></h3>
-          <p class="medio">Urgente24 · Ocio</p>
-        </div>
-        <a href="https://urgente24.com/ocio/sobre-la-pelicula-passing-las-delicias-la-deslealtad-n537069" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">05</span>
-        <div class="content">
-          <h3><a href="https://hacerselacritica.com/tengo-un-amigo-negro-sobre-la-nueva-sex-and-the-city-por-delfina-korn/" target="_blank" rel="noopener">Tengo un amigo negro: sobre la nueva Sex and the City</a></h3>
-          <p class="medio">Hacerse la Crítica</p>
-        </div>
-        <a href="https://hacerselacritica.com/tengo-un-amigo-negro-sobre-la-nueva-sex-and-the-city-por-delfina-korn/" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">06</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/foco/yo-sabia-que-me-podia-morir-asi-que-grabe-un-video-n524316" target="_blank" rel="noopener">Yo sabía que me podía morir, así que grabé un video</a></h3>
-          <p class="medio">Urgente24 · Foco</p>
-        </div>
-        <a href="https://urgente24.com/foco/yo-sabia-que-me-podia-morir-asi-que-grabe-un-video-n524316" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">07</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/mundo/podria-el-ejercito-ucrania-pasar-luchar-uniforme-n534569" target="_blank" rel="noopener">¿Podría el ejército de Ucrania pasar a luchar de uniforme?</a></h3>
-          <p class="medio">Urgente24 · Mundo</p>
-        </div>
-        <a href="https://urgente24.com/mundo/podria-el-ejercito-ucrania-pasar-luchar-uniforme-n534569" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">08</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/analisis/opinion/after-life-si-hay-vida-despues-de-la-muerte-de-un-conyuge" target="_blank" rel="noopener">After Life: sí hay vida después de la muerte de un cónyuge</a></h3>
-          <p class="medio">Urgente24 · Opinión</p>
-        </div>
-        <a href="https://urgente24.com/analisis/opinion/after-life-si-hay-vida-despues-de-la-muerte-de-un-conyuge" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">09</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/analisis/opinion/dios-se-mueve-de-una-manera-misteriosa-para-realizar-sus-maravillas" target="_blank" rel="noopener">Dios se mueve de una manera misteriosa para realizar sus maravillas</a></h3>
-          <p class="medio">Urgente24 · Opinión</p>
-        </div>
-        <a href="https://urgente24.com/analisis/opinion/dios-se-mueve-de-una-manera-misteriosa-para-realizar-sus-maravillas" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">10</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/ocio/cartelera/un-tipo-algo-melancolico-que-escalo-una-pared-de-1000-metros-sin-soga" target="_blank" rel="noopener">Un tipo algo melancólico que escaló una pared de 1000 metros sin soga</a></h3>
-          <p class="medio">Urgente24 · Cartelera</p>
-        </div>
-        <a href="https://urgente24.com/ocio/cartelera/un-tipo-algo-melancolico-que-escalo-una-pared-de-1000-metros-sin-soga" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">11</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/275817-en-las-horas-en-que-el-infierno-no-existio-crecieron-1200-los-casos-de-zoofilia" target="_blank" rel="noopener">En las horas en que el infierno no existió crecieron 1200% los casos de zoofilia</a></h3>
-          <p class="medio">Urgente24</p>
-        </div>
-        <a href="https://urgente24.com/275817-en-las-horas-en-que-el-infierno-no-existio-crecieron-1200-los-casos-de-zoofilia" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">12</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/276058-ellas-no-les-envidian-el-pene-sino-la-facilidad-para-defecar-en-banos-ajenos" target="_blank" rel="noopener">Ellas no les envidian el pene, sino la facilidad para defecar en baños ajenos</a></h3>
-          <p class="medio">Urgente24</p>
-        </div>
-        <a href="https://urgente24.com/276058-ellas-no-les-envidian-el-pene-sino-la-facilidad-para-defecar-en-banos-ajenos" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">13</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/275131-exclusivo-el-plan-del-gobierno-para-impulsar-la-masturbacion-y-reducir-los-abortos" target="_blank" rel="noopener">Exclusivo: el plan del gobierno para impulsar la masturbación y reducir los abortos</a></h3>
-          <p class="medio">Urgente24</p>
-        </div>
-        <a href="https://urgente24.com/275131-exclusivo-el-plan-del-gobierno-para-impulsar-la-masturbacion-y-reducir-los-abortos" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">14</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/275398-despues-de-las-medias-de-colores-macri-se-vistio-de-mar-por-el-dia-del-agua" target="_blank" rel="noopener">Después de las medias de colores, Macri se vistió de mar por el Día del Agua</a></h3>
-          <p class="medio">Urgente24</p>
-        </div>
-        <a href="https://urgente24.com/275398-despues-de-las-medias-de-colores-macri-se-vistio-de-mar-por-el-dia-del-agua" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
-      <li class="articulo reveal">
-        <span class="num">15</span>
-        <div class="content">
-          <h3><a href="https://urgente24.com/277616-a-brillar-mi-amor-el-plan-de-macri-para-beber-fluor-y-generar-tu-propia-iluminacion" target="_blank" rel="noopener">A brillar mi amor: el plan de Macri para beber flúor y generar tu propia iluminación</a></h3>
-          <p class="medio">Urgente24</p>
-        </div>
-        <a href="https://urgente24.com/277616-a-brillar-mi-amor-el-plan-de-macri-para-beber-fluor-y-generar-tu-propia-iluminacion" class="btn btn--ghost btn--mini" target="_blank" rel="noopener">Ver más <span class="arr">→</span></a>
-      </li>
     </ol>
-    <button type="button" class="section-vermas" data-target="articulos">Ver más <span class="arr">→</span></button>
   </div>
 </section>
 
