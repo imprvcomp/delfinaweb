@@ -405,13 +405,13 @@ header.scrolled{
 
 /* ---- Diseño de fondos: separación violeta entre bloques + diseño editorial en blanco ---- */
 
-/* Borde punteado violeta entre cada bloque */
-main > .section{ position:relative; }
-main > .section + .section{
+/* Borde punteado violeta entre cada bloque (incluye hero → siguiente) */
+main > section{ position:relative; }
+main > section + section{
   border-top:2px dashed var(--lavanda);
 }
 /* Rombo violeta centrado sobre la línea (marca de puntuación editorial) */
-main > .section + .section::before{
+main > section + section::before{
   content:""; position:absolute; pointer-events:none;
   top:-8px; left:50%;
   width:14px; height:14px;
@@ -420,8 +420,29 @@ main > .section + .section::before{
   z-index:3;
 }
 
-/* Secciones blancas: limpias */
-#obras, #sobre, #textos, #prensa{ background:#ffffff; }
+/* Secciones blancas: lavado suave de lavanda + acento decorativo */
+#obras, #sobre, #textos, #prensa{
+  background:
+    radial-gradient(ellipse 60% 40% at 92% 6%, rgba(155,165,253,.14), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 6% 96%, rgba(125,162,250,.10), transparent 60%),
+    #ffffff;
+  position:relative;
+  overflow:hidden;
+}
+/* Marca decorativa lavanda en la esquina inferior derecha (símbolo editorial) */
+#obras > .wrap, #sobre > .wrap, #textos > .wrap, #prensa > .wrap{
+  position:relative; z-index:1;
+}
+#obras::after, #sobre::after, #textos::after, #prensa::after{
+  content:"❋";
+  position:absolute; pointer-events:none;
+  bottom:clamp(24px,3vw,44px); right:clamp(24px,4vw,60px);
+  font-size:clamp(2.2rem,4vw,3.4rem);
+  color:var(--lavanda);
+  opacity:.28;
+  line-height:1;
+  z-index:0;
+}
 @media (max-width:760px){
   .articulo{ grid-template-columns:auto 1fr; }
   .articulo .btn{ grid-column:1 / -1; justify-self:start; margin-top:.6rem; }
