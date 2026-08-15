@@ -427,20 +427,19 @@ main > section + section::before{
     radial-gradient(ellipse 50% 40% at 6% 96%, rgba(125,162,250,.10), transparent 60%),
     #ffffff;
   position:relative;
-  overflow:hidden;
 }
-/* Marca decorativa lavanda en la esquina inferior derecha (símbolo editorial) */
 #obras > .wrap, #sobre > .wrap, #textos > .wrap, #prensa > .wrap{
   position:relative; z-index:1;
 }
+/* Círculo violeta contenido, en la esquina inferior derecha */
 #obras::after, #sobre::after, #textos::after, #prensa::after{
   content:"";
   position:absolute; pointer-events:none;
-  bottom:-120px; right:-120px;
-  width:280px; height:280px;
+  bottom:clamp(24px,3vw,50px); right:clamp(24px,3vw,50px);
+  width:clamp(140px,18vw,220px); aspect-ratio:1;
   border:2px solid var(--lavanda);
   border-radius:50%;
-  opacity:.35;
+  opacity:.32;
   z-index:0;
 }
 @media (max-width:760px){
