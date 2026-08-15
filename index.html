@@ -420,46 +420,8 @@ main > .section + .section::before{
   z-index:3;
 }
 
-/* Secciones blancas: grilla suave lavanda + esquinas con brackets */
-#obras, #sobre, #textos, #prensa{
-  background:#ffffff;
-  background-image:
-    linear-gradient(rgba(155,165,253,.09) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(155,165,253,.09) 1px, transparent 1px);
-  background-size:44px 44px;
-  overflow:hidden;
-}
-/* Corner brackets [ ┐ ┘ superior-derecha e inferior-izquierda ] */
-#obras > .wrap, #sobre > .wrap, #textos > .wrap, #prensa > .wrap{
-  position:relative; z-index:1;
-}
-#obras > .wrap::before, #sobre > .wrap::before,
-#textos > .wrap::before, #prensa > .wrap::before{
-  content:""; position:absolute; pointer-events:none;
-  top:-12px; right:0;
-  width:52px; height:52px;
-  border-top:3px solid var(--lavanda);
-  border-right:3px solid var(--lavanda);
-}
-#obras > .wrap::after, #sobre > .wrap::after,
-#textos > .wrap::after, #prensa > .wrap::after{
-  content:""; position:absolute; pointer-events:none;
-  bottom:-12px; left:0;
-  width:52px; height:52px;
-  border-bottom:3px solid var(--lavanda);
-  border-left:3px solid var(--lavanda);
-}
-
-/* Glow suave violeta al fondo (elegante, no invasivo) */
-#obras, #sobre, #textos, #prensa{ position:relative; }
-#obras::after, #sobre::after, #textos::after, #prensa::after{
-  content:""; position:absolute; pointer-events:none;
-  top:-160px; right:-160px;
-  width:420px; height:420px;
-  background:radial-gradient(circle, var(--lavanda) 0%, transparent 62%);
-  opacity:.14; border-radius:50%;
-  z-index:0;
-}
+/* Secciones blancas: limpias */
+#obras, #sobre, #textos, #prensa{ background:#ffffff; }
 @media (max-width:760px){
   .articulo{ grid-template-columns:auto 1fr; }
   .articulo .btn{ grid-column:1 / -1; justify-self:start; margin-top:.6rem; }
