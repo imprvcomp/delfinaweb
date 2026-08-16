@@ -403,6 +403,34 @@ header.scrolled{
 }
 .articulo .btn{ white-space:nowrap; justify-self:end; width:fit-content; }
 
+/* ---- Bloque Contacto simple ---- */
+.contacto-block{
+  text-align:center;
+  max-width:600px;
+  margin:0 auto;
+}
+.contacto-block .eyebrow{ margin-bottom:1.4rem; }
+.contacto-block .contacto-h{
+  font-size:clamp(2.4rem,6vw,4.4rem);
+  font-weight:700; line-height:1;
+  text-transform:uppercase; letter-spacing:-.02em;
+  margin-bottom:1.8rem;
+}
+.contacto-block .contacto-mail{
+  display:inline-block;
+  font-size:clamp(1.05rem,2vw,1.5rem);
+  font-weight:700;
+  color:var(--lavanda-d);
+  padding:.8rem 0;
+  border-bottom:2px solid var(--lavanda);
+  transition:.35s var(--ease);
+  word-break:break-all;
+}
+.contacto-block .contacto-mail:hover{
+  color:var(--tinta);
+  border-color:var(--tinta);
+}
+
 /* ---- Diseño de fondos: separación violeta entre bloques + diseño editorial en blanco ---- */
 
 /* Borde punteado violeta entre cada bloque (incluye hero → siguiente) */
@@ -634,7 +662,7 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
       <a href="#prensa">En la prensa</a>
     </nav>
     <div class="nav-cta">
-      <a href="mailto:kornescritora@gmail.com" class="btn btn--solid btn--mini">Contacto <span class="arr">→</span></a>
+      <a href="#contacto" class="btn btn--solid btn--mini">Contacto <span class="arr">→</span></a>
       <button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -715,6 +743,13 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
         <div class="top"><span class="tag">Cuentos</span><span class="anio">año</span></div>
         <h3>Luna de miel</h3>
         <p class="ed">Ediciones María Susana</p>
+      </article>
+
+      <article class="libro reveal" data-cat="novela">
+        <div class="portada"><img src="assets/decir-mi-nombre.jpeg" alt="Tapa de Decir mi nombre" /></div>
+        <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
+        <h3>Decir mi nombre</h3>
+        <p class="ed">Delfina Korn</p>
       </article>
     </div>
   </div>
@@ -1093,6 +1128,17 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
 </section>
 
 
+<!-- ===================== CONTACTO ===================== -->
+<section class="section" id="contacto">
+  <div class="wrap">
+    <div class="contacto-block reveal">
+      <span class="eyebrow">Contacto</span>
+      <h2 class="contacto-h">Escribime</h2>
+      <a href="mailto:delfidelfister@gmail.com" class="contacto-mail">delfidelfister@gmail.com</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <!-- ===================== MODAL DETALLE DE LIBRO ===================== -->
@@ -1134,12 +1180,11 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
           <a href="#textos">Cuentos</a>
           <a href="#periodismo">Periodismo</a>
           <a href="#prensa">En la prensa</a>
-          <a href="mailto:kornescritora@gmail.com">Contacto</a>
+          <a href="#contacto">Contacto</a>
         </div>
         <div class="foot-col">
           <h4>Contacto</h4>
-          <a href="mailto:kornescritora@gmail.com">kornescritora@gmail.com</a>
-          <a href="tel:+541161028800">11-6-102-8800</a>
+          <a href="mailto:delfidelfister@gmail.com">delfidelfister@gmail.com</a>
         </div>
       </div>
     </div>
