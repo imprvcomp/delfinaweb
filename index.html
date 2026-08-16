@@ -712,44 +712,44 @@ footer{ background:var(--tinta); color:var(--crema); padding:clamp(56px,8vw,96px
 
     <div class="obras-grid" id="obrasGrid">
       <article class="libro reveal" data-cat="novela">
-        <div class="portada"><img src="assets/el-yanqui.jpeg" alt="Tapa de El yanqui" /></div>
-        <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
-        <h3>El yanqui</h3>
-        <p class="ed">Mansalva</p>
-        <p>Una chica de diecisiete años, un amor imposible y los perfumes secretos que guardará en el freezer para descongelar cada vez que necesite recordarlo.</p>
-        <button type="button" class="ver" data-book="el-yanqui">Ver más <span class="arr">→</span></button>
+        <div class="portada"><img src="assets/decir-mi-nombre.jpeg" alt="Tapa de Decir mi nombre" /></div>
+        <div class="top"><span class="tag">Novela</span><span class="anio">2016</span></div>
+        <h3>Decir mi nombre</h3>
+        <p class="ed">La Colección</p>
       </article>
 
       <article class="libro reveal d1" data-cat="cuento">
-        <div class="portada"><img src="assets/prefiero-morir-de-amor.jpeg" alt="Tapa de Prefiero morir de amor" /></div>
-        <div class="top"><span class="tag">Cuentos</span><span class="anio">año</span></div>
-        <h3>Prefiero morir de amor</h3>
-        <p class="ed">Bombal</p>
-        <p>Cuentos atravesados de viajes, enredos amorosos y malentendidos: comedia y drama, todo al mismo tiempo y superpuesto.</p>
-        <button type="button" class="ver" data-book="prefiero-morir-de-amor">Ver más <span class="arr">→</span></button>
-      </article>
-
-      <article class="libro reveal d2" data-cat="cuento">
         <div class="portada"><img src="assets/aguas-compartidas.jpeg" alt="Tapa de Aguas compartidas" /></div>
-        <div class="top"><span class="tag">Cuentos</span><span class="anio">año</span></div>
+        <div class="top"><span class="tag">Cuentos</span><span class="anio">2019</span></div>
         <h3>Aguas compartidas</h3>
         <p class="ed">Griselda García Editora</p>
         <p>Relatos que no se atienen a nada: desbordan. Voces femeninas, latinas y africanas, que se plantan en el mundo.</p>
         <button type="button" class="ver" data-book="aguas-compartidas">Ver más <span class="arr">→</span></button>
       </article>
 
-      <article class="libro reveal d3" data-cat="cuento">
+      <article class="libro reveal d2" data-cat="cuento">
         <div class="portada"><img src="assets/luna-de-miel.jpeg" alt="Tapa de Luna de miel" /></div>
-        <div class="top"><span class="tag">Cuentos</span><span class="anio">año</span></div>
+        <div class="top"><span class="tag">Cuentos</span><span class="anio">2020</span></div>
         <h3>Luna de miel</h3>
-        <p class="ed">Ediciones María Susana</p>
+        <p class="ed">Cuentos María Susana</p>
       </article>
 
-      <article class="libro reveal" data-cat="novela">
-        <div class="portada"><img src="assets/decir-mi-nombre.jpeg" alt="Tapa de Decir mi nombre" /></div>
-        <div class="top"><span class="tag">Novela</span><span class="anio">año</span></div>
-        <h3>Decir mi nombre</h3>
-        <p class="ed">Delfina Korn</p>
+      <article class="libro reveal d3" data-cat="novela">
+        <div class="portada"><img src="assets/el-yanqui.jpeg" alt="Tapa de El yanqui" /></div>
+        <div class="top"><span class="tag">Novela</span><span class="anio">2021</span></div>
+        <h3>El yanqui</h3>
+        <p class="ed">Mansalva</p>
+        <p>Una chica de diecisiete años, un amor imposible y los perfumes secretos que guardará en el freezer para descongelar cada vez que necesite recordarlo.</p>
+        <button type="button" class="ver" data-book="el-yanqui">Ver más <span class="arr">→</span></button>
+      </article>
+
+      <article class="libro reveal" data-cat="cuento">
+        <div class="portada"><img src="assets/prefiero-morir-de-amor.jpeg" alt="Tapa de Prefiero morir de amor" /></div>
+        <div class="top"><span class="tag">Cuentos</span><span class="anio">2022</span></div>
+        <h3>Prefiero morir de amor</h3>
+        <p class="ed">Bombal</p>
+        <p>Cuentos atravesados de viajes, enredos amorosos y malentendidos: comedia y drama, todo al mismo tiempo y superpuesto.</p>
+        <button type="button" class="ver" data-book="prefiero-morir-de-amor">Ver más <span class="arr">→</span></button>
       </article>
     </div>
   </div>
@@ -1271,7 +1271,7 @@ document.getElementById('year').textContent = new Date().getFullYear();
 const BOOKS_DETAIL = {
   'aguas-compartidas': {
     title: 'Aguas compartidas',
-    editorial: 'Cuentos · Griselda García Editora',
+    editorial: 'Cuentos · Griselda García Editora · 2019',
     body: `
 <p>Los relatos de Delfina Korn no se atienen a nada: desbordan. Sus personajes, de diferentes nacionalidades y creencias religiosas, parecen movidos por la sangre. Una porteña mantiene un amor a distancia con un paraguayo hasta que se entera que espera un hijo de otra. Otra siente que con su sola presencia en el hospital va a curar a su abuela. Una estudiante de danza nos cuenta cómo hace para abandonar las clases de su posesiva profesora senegalesa.</p>
 <p>La idea de lo distinto atraviesa al lector durante todo el libro, como cuando la narradora de “La pileta equivocada” entra a la casa de su amiga peruana: “Había para mí algo reconfortante en ese mundo, en participar de esas fiestas. Yo era casi la única argentina que estaba invitada. Era como estar en otro país. En esa sociedad, a diferencia de la mía, las cosas estaban claras. Contra una pared iban las mujeres; contra la otra, los hombres. Ellos bebían, ellas sonreían. Todo el mundo reía y todo el mundo sabía qué lugar ocupaba”.</p>
@@ -1280,7 +1280,7 @@ const BOOKS_DETAIL = {
   },
   'el-yanqui': {
     title: 'El yanqui',
-    editorial: 'Novela · Mansalva',
+    editorial: 'Novela · Mansalva · 2021',
     body: `
 <p>Una chica de diecisiete años se resiste a mirarse al espejo mientras viaja en un ascensor junto a su amor imposible, un adolescente millonario y revulsivo, rumbo al encuentro con su futuro. Al igual que los perfumes secretos que ella guardará celosamente en un frasquito de cristal en el freezer de su heladera para descongelarlos cada vez que necesite recordar el perfume de su amor, las escenas de esta novela son verdaderos tesoros, momentos seleccionados en la vida de una chica que se va transformando en mujer adulta.</p>
 <p>¿Qué significa ser adolescente, ser “menor de edad”, ser adulta, ser vieja? Con gran sabiduría, El Yanqui nos recuerda que estas categorías se relacionan con la tutela. Y así, las mejores escenas de esta historia estarán compartidas por una chica y su mejor amiga, pero también por sus abuelas, bajo la tutela de madres y padres. Amigas enredadas entre acolchados con sus abuelas, recibiendo billetes de sus manos por debajo del mantel, o revisando pasaportes con el fin de estar listas para, finalmente, burlar la vigilancia y escapar a la noche mientras la madre duerme. Es claro que la protagonista de esta historia sabe.</p>
@@ -1291,7 +1291,7 @@ const BOOKS_DETAIL = {
   },
   'prefiero-morir-de-amor': {
     title: 'Prefiero morir de amor',
-    editorial: 'Cuentos · Bombal',
+    editorial: 'Cuentos · Bombal · 2022',
     body: `
 <p>“Yo lo que hago cuando estoy así, embrujada, es hablar con todo el mundo” dice la narradora de unos de estos cuentos. Y cuando dice “todo el mundo”, está siendo totalmente literal. Un cobayo temeroso de cruzarse con su ex, un karateka disfrazado de ninja, fiestas de Purim, conductores radiales tan enamorados como al borde del suicidio, viajes a África, un médico llamado Yefri Connel pero más conocido como Doctor Papito: todo esto y mucho más encuentra una manera de habitar con naturalidad y soltura los mundos que Delfina Korn arma para nosotros.</p>
 <p>Atravesados de viajes, de enredos amorosos, de malentendidos y de problemas para comunicarse, estos cuentos son chapuzones veloces en medio del torbellino, son aceleración y fuga hacia adelante, son imaginación desbocada, desparpajo y humor zumbón, son depresión y corazones destrozados, todo al mismo tiempo y superpuesto: comedia y drama. Y entre tanto, en las pequeñas pausas que los personajes hacen para permitirse respirar, una mirada lúcida e implacable, capaz de definir un estado de ánimo, una verdad innegable o una observación sabia mediante el único golpe seco de un latigazo. Solo para después, enseguida y a todo galope, seguir preguntándose: ¿dónde estará el futuro?, ¿qué será?, ¿cómo será detenerse?, ¿cómo será frenar?.</p>
@@ -1302,7 +1302,7 @@ const BOOKS_DETAIL = {
   },
   'luna-de-miel': {
     title: 'Luna de miel',
-    editorial: 'Cuentos · Ediciones María Susana',
+    editorial: 'Cuentos · Cuentos María Susana · 2020',
     body: ``
   }
 };
