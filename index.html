@@ -1213,17 +1213,19 @@ filtros.forEach(btn => {
 /* ========== Formulario (demo: sin backend) ========== */
 const form = document.getElementById('contactForm');
 const formMsg = document.getElementById('formMsg');
-form.addEventListener('submit', e => {
-  e.preventDefault();
-  if (!form.checkValidity()){
-    formMsg.textContent = 'Por favor completá todos los campos.';
-    formMsg.style.color = '#c0563f';
-    return;
-  }
-  formMsg.textContent = '¡Gracias! Tu mensaje fue enviado. Te respondo a la brevedad.';
-  formMsg.style.color = '';
-  form.reset();
-});
+if (form && formMsg){
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (!form.checkValidity()){
+      formMsg.textContent = 'Por favor completá todos los campos.';
+      formMsg.style.color = '#c0563f';
+      return;
+    }
+    formMsg.textContent = '¡Gracias! Tu mensaje fue enviado. Te respondo a la brevedad.';
+    formMsg.style.color = '';
+    form.reset();
+  });
+}
 
 /* ========== Año dinámico ========== */
 document.getElementById('year').textContent = new Date().getFullYear();
